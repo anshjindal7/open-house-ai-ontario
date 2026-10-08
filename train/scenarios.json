@@ -1,0 +1,863 @@
+{
+ "_about": "Everyday situations for training. Each branch names an official source and keywords; train/scenarios.py picks the best-matching sentence from that source's real text, so every quote is verbatim. The `when` labels, openers and question wording are the only hand-written parts. `side` says which party a branch mainly helps, used for balanced answers and for negotiation suggestions. Review with: python -m train.scenarios --show",
+ "scenarios": [
+  {
+   "id": "broken-fixture",
+   "topic": "a broken sink or appliance",
+   "questions": [
+    "My sink is broken. What should I do?",
+    "The kitchen faucet in my apartment stopped working. Who has to fix it?",
+    "My tenant says the fridge stopped working. Do I have to replace it?",
+    "Something in the unit broke. Who pays for the repair, the landlord or the tenant?"
+   ],
+   "opener": "It depends on how it broke. Here's how Ontario law splits the responsibility.",
+   "branches": [
+    {
+     "when": "If it broke from normal use or age (wear and tear)",
+     "src": "rta:20",
+     "about": "landlord responsible maintaining good state of repair fit for habitation",
+     "side": "tenant"
+    },
+    {
+     "when": "If the tenant, someone living there, or a guest damaged it on purpose or through carelessness",
+     "src": "rta:34",
+     "about": "tenant responsible repair undue damage wilful negligent conduct",
+     "side": "landlord"
+    },
+    {
+     "when": "The first step either way",
+     "src": "guide:Maintenance and Repairs",
+     "about": "first thing ask landlord in writing fix problem",
+     "side": "both"
+    },
+    {
+     "when": "Don't hold back rent while you wait",
+     "src": "guide:Maintenance and Repairs",
+     "about": "should not withhold any part of the rent",
+     "side": "both"
+    }
+   ],
+   "followups": [
+    {
+     "q": "What if I broke it by accident?",
+     "branch": 1
+    },
+    {
+     "q": "What if the landlord doesn't fix it?",
+     "src": "rta:30",
+     "about": "Board may order landlord do repairs abatement rent",
+     "side": "tenant",
+     "when": "If the landlord doesn't repair it after being told"
+    }
+   ],
+   "clarify": {
+    "questions": [
+     "My sink is broken.",
+     "The dishwasher in the unit stopped working.",
+     "The bathroom faucet broke."
+    ],
+    "ask": "One detail changes the answer: how did it break?",
+    "options": [
+     {
+      "label": "From normal use or age",
+      "branch": 0,
+      "replies": [
+       "It just stopped working one day.",
+       "It's old and wore out.",
+       "Nobody did anything, it just broke."
+      ]
+     },
+     {
+      "label": "Someone damaged it",
+      "branch": 1,
+      "replies": [
+       "My kid broke it.",
+       "A guest knocked it over and it cracked.",
+       "I dropped something heavy on it."
+      ]
+     }
+    ],
+    "either_way": 2
+   }
+  },
+  {
+   "id": "pests",
+   "topic": "pests in the unit",
+   "questions": [
+    "There are cockroaches in my apartment. Who deals with it?",
+    "My unit has bed bugs. Is the landlord responsible?",
+    "A tenant reported mice. What are my obligations as the landlord?"
+   ],
+   "opener": "Pest control is usually part of the landlord's duty to maintain the unit, but the tenant has a cleanliness duty too.",
+   "branches": [
+    {
+     "when": "The landlord's duty",
+     "src": "rta:20",
+     "about": "landlord responsible maintaining good state of repair fit for habitation health safety maintenance standards",
+     "side": "tenant"
+    },
+    {
+     "when": "The tenant's duty",
+     "src": "rta:33",
+     "about": "tenant responsible ordinary cleanliness",
+     "side": "landlord"
+    },
+    {
+     "when": "When a dirty unit becomes a problem",
+     "src": "guide:Maintenance and Repairs",
+     "about": "unit so dirty attracts pests",
+     "side": "landlord"
+    }
+   ],
+   "clarify": {
+    "questions": [
+     "There are mice in my unit.",
+     "We have cockroaches."
+    ],
+    "ask": "One detail matters here: is the unit kept reasonably clean, or could clutter or food be attracting them?",
+    "options": [
+     {
+      "label": "The unit is kept clean",
+      "branch": 0,
+      "replies": [
+       "The place is clean, they're coming from somewhere else.",
+       "We keep it clean, it's the building."
+      ]
+     },
+     {
+      "label": "Cleanliness may be part of it",
+      "branch": 2,
+      "replies": [
+       "Honestly it's been pretty messy lately.",
+       "There's a lot of clutter and food out."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "no-heat",
+   "topic": "heat, hot water, water or electricity not working or cut off (vital services)",
+   "questions": [
+    "My heat isn't working and it's freezing. What can I do?",
+    "There's been no hot water in my unit since Monday.",
+    "My landlord shut off the water. Is that allowed?",
+    "Can a landlord cut off the electricity if the tenant hasn't paid?"
+   ],
+   "opener": "Heat, hot and cold water, fuel and electricity are vital services in Ontario, and there are firm rules about them.",
+   "branches": [
+    {
+     "when": "What the landlord can't do",
+     "src": "rta:21",
+     "about": "landlord shall not withhold reasonable supply vital service",
+     "side": "tenant"
+    },
+    {
+     "when": "What counts as a vital service",
+     "src": "rta:2",
+     "about": "vital service means hot or cold water fuel electricity gas heat",
+     "side": "both"
+    },
+    {
+     "when": "What the standard lease says",
+     "src": "lease:K",
+     "about": "landlord cannot withhold shut off reasonable supply vital service",
+     "side": "both"
+    },
+    {
+     "when": "If it broke down rather than being shut off",
+     "src": "rta:20",
+     "about": "landlord responsible maintaining good state of repair fit for habitation",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "entry",
+   "topic": "the landlord entering the unit",
+   "questions": [
+    "Can my landlord come into my apartment without telling me?",
+    "How much notice do I need to give my tenant before I go in to do repairs?",
+    "My landlord showed up and walked in. Is that legal?"
+   ],
+   "opener": "Landlords can enter, but only in specific situations. Here are the rules.",
+   "branches": [
+    {
+     "when": "With 24 hours' written notice",
+     "src": "rta:27",
+     "about": "enter written notice at least 24 hours before repair",
+     "side": "both"
+    },
+    {
+     "when": "Without written notice",
+     "src": "rta:26",
+     "about": "enter without written notice emergency tenant consents",
+     "side": "both"
+    },
+    {
+     "when": "Hours and frequency",
+     "src": "guide:Right of Entry",
+     "about": "time of entry between 8 a.m. and 8 p.m.",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "rent-increase",
+   "topic": "a rent increase",
+   "questions": [
+    "Can my landlord raise my rent in the middle of my lease?",
+    "How often can I increase my tenant's rent?",
+    "I got a notice that my rent is going up. Is it valid?"
+   ],
+   "opener": "Rent increases in Ontario have a notice rule, a timing rule, and usually a limit on the amount.",
+   "branches": [
+    {
+     "when": "Notice",
+     "src": "rta:116",
+     "about": "shall not increase rent without at least 90 days written notice",
+     "side": "tenant"
+    },
+    {
+     "when": "How often",
+     "src": "rta:119",
+     "about": "only if at least 12 months have elapsed",
+     "side": "tenant"
+    },
+    {
+     "when": "How much",
+     "src": "rta:120",
+     "about": "no landlord may increase rent by more than the guideline",
+     "side": "tenant"
+    },
+    {
+     "when": "If the notice wasn't given properly",
+     "src": "rta:116",
+     "about": "increase in rent is void if landlord has not given notice",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "own-use",
+   "topic": "a notice that the landlord or a family member is moving in (N12)",
+   "questions": [
+    "My landlord gave me an N12 saying their daughter is moving in. What happens now?",
+    "I want to move back into my rental house. How do I end the tenancy properly?",
+    "Do I get anything if my landlord evicts me to move in themselves?"
+   ],
+   "opener": "A landlord can end a tenancy to move in, but it has to be in good faith and comes with obligations.",
+   "branches": [
+    {
+     "when": "When it's allowed",
+     "src": "rta:48",
+     "about": "landlord in good faith requires possession residential occupation period at least one year",
+     "side": "landlord"
+    },
+    {
+     "when": "Compensation",
+     "src": "rta:48.1",
+     "about": "compensate tenant amount equal one month's rent",
+     "side": "tenant"
+    },
+    {
+     "when": "If it wasn't really in good faith",
+     "src": "rta:57",
+     "about": "Board may make order application former tenant determines",
+     "side": "tenant",
+     "extend": 1
+    }
+   ]
+  },
+  {
+   "id": "leave-early",
+   "topic": "a tenant wanting to leave before the lease ends",
+   "questions": [
+    "I need to move out before my lease is up. What are my options?",
+    "My tenant wants to break the lease early. What can I do?",
+    "Can I end my one-year lease after six months?"
+   ],
+   "opener": "There are a few legal ways to leave early. Each one depends on the other side.",
+   "branches": [
+    {
+     "when": "Agreeing with the landlord",
+     "src": "guide:How a Tenant Can End",
+     "about": "agreed rent specific period cannot move out before period ends unless",
+     "side": "both",
+     "extend": 3
+    },
+    {
+     "when": "Assigning the lease to someone else",
+     "src": "rta:95",
+     "about": "consent of landlord tenant may assign rental unit to another person",
+     "side": "tenant"
+    },
+    {
+     "when": "The usual notice rule",
+     "src": "rta:47",
+     "about": "tenant may terminate end of period end of term giving notice",
+     "side": "landlord"
+    },
+    {
+     "when": "If the tenant just leaves",
+     "src": "rta:16",
+     "about": "duty to take reasonable steps to minimize losses",
+     "side": "tenant"
+    }
+   ],
+   "clarify": {
+    "questions": [
+     "I need to get out of my lease early.",
+     "I want to break my lease."
+    ],
+    "ask": "A few options exist, and the right one depends on the landlord. Have you talked to them yet?",
+    "options": [
+     {
+      "label": "The landlord is willing to agree",
+      "branch": 0,
+      "replies": [
+       "Yes, they said they're fine with it.",
+       "The landlord agreed to let me go."
+      ]
+     },
+     {
+      "label": "The landlord won't agree",
+      "branch": 1,
+      "replies": [
+       "They said no.",
+       "The landlord refuses to let me leave early."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lease-ends",
+   "topic": "what happens when a fixed-term lease ends",
+   "questions": [
+    "My one-year lease ends next month. Do I have to move out?",
+    "The lease term is over. Can I make my tenant leave?",
+    "Do I need to sign a new lease when my old one runs out?"
+   ],
+   "opener": "In Ontario, the end of a lease term doesn't end the tenancy by itself.",
+   "branches": [
+    {
+     "when": "If nothing is done",
+     "src": "rta:38",
+     "about": "fixed term ends not renewed or terminated deemed renewed monthly tenancy",
+     "side": "tenant"
+    },
+    {
+     "when": "Ending a tenancy",
+     "src": "rta:37",
+     "about": "tenancy may be terminated only in accordance with this Act",
+     "side": "tenant"
+    },
+    {
+     "when": "What the standard lease says",
+     "src": "lease:C",
+     "about": "tenant does not have to move out at end of term",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "late-rent",
+   "topic": "rent that hasn't been paid",
+   "questions": [
+    "My tenant is two weeks late on rent. What can I do?",
+    "I can't pay my rent this month. What happens?",
+    "What's the process if a tenant stops paying rent?"
+   ],
+   "opener": "There's a set process for unpaid rent, and the tenant has chances to fix it along the way.",
+   "branches": [
+    {
+     "when": "The landlord's first step",
+     "src": "rta:59",
+     "about": "tenant fails to pay rent lawfully owing landlord may give notice termination",
+     "side": "landlord"
+    },
+    {
+     "when": "Paying what's owed stops the notice",
+     "src": "rta:59",
+     "about": "notice void if tenant pays rent arrears",
+     "side": "tenant",
+     "extend": 2
+    },
+    {
+     "when": "Raising other issues at the hearing",
+     "src": "guide:If a Tenant Does Not Pay Rent",
+     "about": "tenant can pay all rent owing",
+     "side": "tenant"
+    },
+    {
+     "when": "Returned (NSF) payments",
+     "src": "lease-section:5",
+     "about": "landlord administration charge NSF cheque cannot be more than $20.00",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "damage-deposit",
+   "topic": "a damage or security deposit",
+   "questions": [
+    "My landlord wants a $500 damage deposit. Is that legal?",
+    "Can I ask a new tenant for a security deposit?",
+    "What deposits can a landlord collect in Ontario?"
+   ],
+   "opener": "Ontario limits deposits to two kinds. A general damage deposit isn't one of them.",
+   "branches": [
+    {
+     "when": "The only security deposit allowed",
+     "src": "rta:105",
+     "about": "only security deposit landlord may collect is rent deposit",
+     "side": "tenant"
+    },
+    {
+     "when": "How much a rent deposit can be",
+     "src": "rta:106",
+     "about": "amount of rent deposit shall not be more than rent for one period",
+     "side": "both"
+    },
+    {
+     "when": "The two deposits in plain language",
+     "src": "lease:H",
+     "about": "landlord can only collect deposit for last month's rent refundable key deposit",
+     "side": "both"
+    }
+   ]
+  },
+  {
+   "id": "move-out-damage",
+   "topic": "damage claims against a tenant, including a landlord keeping or deducting the deposit for damage",
+   "questions": [
+    "My tenant moved out and left holes in the walls. Can I keep their last month's deposit?",
+    "My old landlord says I owe money for damage. What can they do?",
+    "How does a landlord get paid for damage a former tenant caused?",
+    "My landlord says they'll take the cost of damage out of my deposit.",
+    "Can my landlord keep my last month's rent deposit because of damage?",
+    "Can I deduct repair costs from my tenant's deposit?"
+   ],
+   "opener": "The rent deposit and damage claims are kept separate in Ontario.",
+   "branches": [
+    {
+     "when": "The landlord's application",
+     "src": "rta:89",
+     "about": "landlord may apply order tenant former tenant pay reasonable costs repair undue damage",
+     "side": "landlord",
+     "extend": 1
+    },
+    {
+     "when": "What a tenant has to pay for",
+     "src": "rta:34",
+     "about": "tenant responsible repair undue damage wilful negligent conduct",
+     "side": "landlord"
+    },
+    {
+     "when": "What the rent deposit is for",
+     "src": "rta:106",
+     "about": "landlord shall apply rent deposit payment rent last rent period before tenancy terminates",
+     "side": "tenant"
+    },
+    {
+     "when": "The filing deadline",
+     "src": "guide:Collecting Money a Former Tenant Owes",
+     "about": "within one year after the former tenant moved out",
+     "side": "tenant"
+    }
+   ],
+   "clarify": {
+    "questions": [
+     "The tenant moved out and the walls are damaged.",
+     "There's damage in the unit after the tenant left."
+    ],
+    "ask": "One detail changes the answer: is it normal wear from living there, or damage beyond that?",
+    "options": [
+     {
+      "label": "Normal wear and tear",
+      "branch": 1,
+      "replies": [
+       "Just small scuffs and nail holes from pictures.",
+       "Normal wear, faded paint."
+      ]
+     },
+     {
+      "label": "Damage beyond normal wear",
+      "branch": 0,
+      "replies": [
+       "There are big holes punched in the walls.",
+       "The floor was badly damaged by water they left running."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "locks",
+   "topic": "locks and entry doors: changing the locks, or a broken lock or door",
+   "questions": [
+    "My landlord changed the locks while I was out. What can I do?",
+    "Can I change the locks on my apartment?",
+    "The tenant changed the locks without asking. Is that allowed?",
+    "My front door lock is broken. What should I do?",
+    "The main door to my unit won't close or lock."
+   ],
+   "opener": "Both sides have rules about locks and doors.",
+   "branches": [
+    {
+     "when": "If a lock or door is broken",
+     "src": "rta:20",
+     "about": "landlord responsible maintaining good state of repair fit for habitation",
+     "side": "tenant"
+    },
+    {
+     "when": "The first step",
+     "src": "guide:Maintenance and Repairs",
+     "about": "first thing ask landlord in writing fix problem",
+     "side": "both"
+    },
+    {
+     "when": "The landlord",
+     "src": "rta:24",
+     "about": "landlord shall not alter locking system without giving tenant replacement keys",
+     "side": "tenant"
+    },
+    {
+     "when": "The tenant (don't change or replace the lock yourself without consent)",
+     "src": "rta:35",
+     "about": "tenant shall not alter locking system without consent of landlord",
+     "side": "landlord",
+     "always": true
+    },
+    {
+     "when": "If a tenant is locked out",
+     "src": "guide:Locked out",
+     "about": "locked out apply LTB Tenant Application about Tenant Rights T2 order",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "pets",
+   "topic": "a no-pets rule",
+   "questions": [
+    "My lease says no pets. Can I still get a dog?",
+    "Can I refuse to rent to someone with a cat?",
+    "Is a no-pets clause enforceable in Ontario?"
+   ],
+   "opener": "A no-pets clause in an Ontario lease generally isn't enforceable, but pets can still lead to problems in some situations.",
+   "branches": [
+    {
+     "when": "The rule",
+     "src": "rta:14",
+     "about": "provision prohibiting presence of animals void",
+     "side": "tenant"
+    },
+    {
+     "when": "Where pets can still matter",
+     "src": "lease:R",
+     "about": "some cases landlord can apply Landlord and Tenant Board evict tenant who has a pet",
+     "side": "landlord",
+     "extend": 4
+    }
+   ]
+  },
+  {
+   "id": "guests",
+   "topic": "guests and roommates",
+   "questions": [
+    "Can my landlord stop me from having my partner stay over?",
+    "My tenant has someone living with them who isn't on the lease. What can I do?",
+    "Can a landlord charge extra for guests?"
+   ],
+   "opener": "Tenants can have guests, and usually roommates too, within limits.",
+   "branches": [
+    {
+     "when": "Guests",
+     "src": "lease:Q",
+     "about": "landlord cannot stop tenants from having guests",
+     "side": "tenant"
+    },
+    {
+     "when": "Roommates and occupancy limits",
+     "src": "lease:Q",
+     "about": "roommate municipal by-laws occupancy standards",
+     "side": "both"
+    },
+    {
+     "when": "Occupants who aren't tenants",
+     "src": "guide:Occupants and Roommates",
+     "about": "occupant not a tenant",
+     "side": "landlord"
+    }
+   ]
+  },
+  {
+   "id": "sublet",
+   "topic": "subletting or assigning the lease",
+   "questions": [
+    "Can I sublet my apartment while I'm away for the summer?",
+    "My tenant wants to sublet. Do I have to agree?",
+    "What's the difference between subletting and assigning a lease?"
+   ],
+   "opener": "Subletting and assigning both need the landlord's consent, but that consent has limits.",
+   "branches": [
+    {
+     "when": "Subletting",
+     "src": "rta:97",
+     "about": "tenant may sublet with consent of landlord shall not arbitrarily unreasonably withhold consent",
+     "side": "both"
+    },
+    {
+     "when": "Assigning",
+     "src": "rta:95",
+     "about": "with consent of landlord tenant may assign",
+     "side": "both"
+    },
+    {
+     "when": "The difference, in plain language",
+     "src": "lease:P",
+     "about": "assignment transfers right to occupy sublet moves out",
+     "side": "both"
+    }
+   ]
+  },
+  {
+   "id": "harassment",
+   "topic": "harassment or interference",
+   "questions": [
+    "My landlord keeps texting and threatening me. What can I do?",
+    "What counts as harassment by a landlord in Ontario?",
+    "My tenant says I'm harassing them because I asked about the rent. What does the law say?"
+   ],
+   "opener": "Ontario law protects a tenant's reasonable enjoyment of their home, and there's a specific rule about harassment.",
+   "branches": [
+    {
+     "when": "The rule",
+     "src": "rta:23",
+     "about": "landlord shall not harass obstruct coerce threaten interfere",
+     "side": "tenant"
+    },
+    {
+     "when": "Reasonable enjoyment",
+     "src": "rta:22",
+     "about": "not substantially interfere reasonable enjoyment",
+     "side": "tenant"
+    },
+    {
+     "when": "How the Board looks at it",
+     "src": "guide:Tenants Rights",
+     "about": "harassment conduct ought reasonably to be known unwelcome",
+     "side": "both"
+    }
+   ]
+  },
+  {
+   "id": "renoviction",
+   "topic": "a notice to end the tenancy for renovations (N13)",
+   "questions": [
+    "My landlord says I have to leave for renovations. Can I come back after?",
+    "I want to renovate my rental unit. How do I end the tenancy legally?",
+    "I got an N13. What are my rights?"
+   ],
+   "opener": "A landlord can end a tenancy for major repairs, but the tenant often has the right to return and to compensation.",
+   "branches": [
+    {
+     "when": "When it's allowed",
+     "src": "rta:50",
+     "about": "landlord may give notice termination requires possession rental unit in order to",
+     "side": "landlord",
+     "extend": 3
+    },
+    {
+     "when": "The right to come back",
+     "src": "rta:53",
+     "about": "right of first refusal occupy rental unit when repairs completed",
+     "side": "tenant"
+    },
+    {
+     "when": "How the Board handles it",
+     "src": "guide:Eviction for Personal Use",
+     "about": "repairs or renovations so extensive require building permit vacant",
+     "side": "both"
+    }
+   ]
+  },
+  {
+   "id": "post-dated",
+   "topic": "post-dated cheques or automatic payments",
+   "questions": [
+    "My landlord says I have to give 12 post-dated cheques. Do I?",
+    "Can I require my tenant to pay rent by pre-authorized debit?"
+   ],
+   "opener": "This one is simple: it can't be required, but the tenant can choose it.",
+   "branches": [
+    {
+     "when": "The rule",
+     "src": "rta:108",
+     "about": "neither landlord nor tenancy agreement shall require tenant prospective tenant",
+     "side": "tenant",
+     "extend": 1
+    },
+    {
+     "when": "In plain language",
+     "src": "guide:A Guide to the Residential Tenancies Act",
+     "about": "post-dated cheques automatic payments landlord cannot require tenant",
+     "side": "both"
+    }
+   ]
+  },
+  {
+   "id": "property-left",
+   "topic": "belongings left behind after a tenant moves out",
+   "questions": [
+    "My tenant moved out and left furniture behind. What can I do with it?",
+    "I left some things at my old apartment. Can my landlord throw them out?"
+   ],
+   "opener": "It depends on how the tenancy ended.",
+   "branches": [
+    {
+     "when": "After a notice or agreement to end the tenancy",
+     "src": "rta:41",
+     "about": "landlord may sell retain dispose property rental unit vacated notice agreement",
+     "side": "landlord",
+     "extend": 4
+    },
+    {
+     "when": "In plain language",
+     "src": "guide:Property Left Behind",
+     "about": "landlord may immediately sell keep dispose property tenant left behind",
+     "side": "both"
+    }
+   ]
+  },
+  {
+   "id": "noise",
+   "topic": "a tenant disturbing others",
+   "questions": [
+    "My tenant's loud parties are bothering the other tenants. What can I do?",
+    "I got an N5 for noise. What does that mean?"
+   ],
+   "opener": "Serious, ongoing disturbance can be grounds to end a tenancy, but there's a process with a chance to fix it.",
+   "branches": [
+    {
+     "when": "The ground for a notice",
+     "src": "rta:64",
+     "about": "conduct substantially interferes reasonable enjoyment",
+     "side": "landlord"
+    },
+    {
+     "when": "The chance to correct it",
+     "src": "guide:Procedural Issues Regarding Eviction",
+     "about": "first N5 voidable tenant stops conduct seven days",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "selling",
+   "topic": "the landlord selling the rental",
+   "questions": [
+    "My landlord is selling the house. Do I have to move out?",
+    "I'm selling my rental property. What happens to the tenant?"
+   ],
+   "opener": "A sale doesn't end a tenancy by itself. There are specific rules if the buyer wants to move in.",
+   "branches": [
+    {
+     "when": "A new owner takes over the lease",
+     "src": "lease:B",
+     "about": "new landlord same rights duties follow all terms",
+     "side": "tenant"
+    },
+    {
+     "when": "If the buyer wants to live there",
+     "src": "rta:49",
+     "about": "agreement of purchase and sale purchaser good faith requires possession",
+     "side": "landlord"
+    },
+    {
+     "when": "Compensation",
+     "src": "rta:49.1",
+     "about": "compensate tenant one month's rent",
+     "side": "tenant"
+    }
+   ]
+  },
+  {
+   "id": "discrimination",
+   "topic": "discrimination against a tenant (Human Rights Code grounds such as family status, disability or religion)",
+   "questions": [
+    "Can my landlord evict me because I'm pregnant?",
+    "My landlord won't rent to families with kids. Is that allowed?",
+    "I think my landlord is treating me differently because of my religion."
+   ],
+   "opener": "Ontario's Human Rights Code protects tenants from discrimination. Whether the Landlord and Tenant Board or the Human Rights Tribunal deals with it depends on the situation.",
+   "branches": [
+    {
+     "when": "The protection",
+     "src": "lease:M",
+     "about": "landlord discriminates prohibited grounds Ontario Human Rights Code violating tenant rights",
+     "side": "tenant"
+    },
+    {
+     "when": "Where it can be heard",
+     "src": "lease:M",
+     "about": "Landlord and Tenant Board may consider discrimination relates application Human Rights Tribunal",
+     "side": "both"
+    },
+    {
+     "when": "Before a tenancy starts",
+     "src": "guide:Human Rights",
+     "about": "refused to provide rental unit Code ground discrimination contact Human Rights Tribunal",
+     "side": "both"
+    },
+    {
+     "when": "How the Board looks at it",
+     "src": "guide:Human Rights",
+     "about": "discrimination may be clear landlord seeking evict tenant simply because practices particular religion",
+     "side": "both",
+     "extend": 0
+    }
+   ]
+  },
+  {
+   "id": "roommates",
+   "topic": "a roommate or occupant (someone living in the unit who isn't a tenant on the lease)",
+   "questions": [
+    "My roommate won't pay their share of the rent.",
+    "Is my roommate a tenant if they're not on the lease?",
+    "What happens to my roommate if I move out?"
+   ],
+   "opener": "The Residential Tenancies Act treats roommates and occupants differently from tenants, which affects what the Landlord and Tenant Board can do.",
+   "branches": [
+    {
+     "when": "Who counts as a roommate",
+     "src": "guide:Occupants and Roommates",
+     "about": "roommate person shares room rental unit with tenant but is not a tenant",
+     "side": "both"
+    },
+    {
+     "when": "When the tenancy ends",
+     "src": "guide:Occupants and Roommates",
+     "about": "occupant or roommate must vacate rental unit along with the tenant",
+     "side": "landlord"
+    },
+    {
+     "when": "Having a roommate",
+     "src": "lease:Q",
+     "about": "landlord cannot prevent tenant having roommate municipal by-laws occupancy standards",
+     "side": "tenant"
+    }
+   ]
+  }
+ ],
+ "negotiation": {
+  "_about": "Templates for when someone says which side they're on and asks for help with a negotiation. The answer favours the asker, is labelled as suggestions, and still shows the strongest point for the other side.",
+  "questions": [
+   "I'm the {role}. We're negotiating about {topic} right now. What should I bring up?",
+   "I'm the {role} and we're trying to work out {topic}. Any suggestions for my side?",
+   "As the {role}, how should I approach a conversation about {topic}?"
+  ]
+ }
+}

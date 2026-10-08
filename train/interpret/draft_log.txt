@@ -1,0 +1,51 @@
+Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 2441.55it/s]
+case:DOC-7043146: clean
+case:DOC-7246344: clean
+case:DOC-8037408: clean
+case:DOC-7336535: flags: leans opposite to the real ruling
+case:DOC-8132908: clean
+case:DOC-7784404: clean
+case:DOC-8437034: clean
+case:DOC-8139024: flags: fact-check issues
+case:DOC-8162347: clean
+case:DOC-7320498: clean
+case:DOC-8360578: clean
+case:DOC-7610784: flags: fact-check issues
+case:DOC-7880687: flags: leans opposite to the real ruling
+case:DOC-8218613: clean
+case:DOC-7778972: flags: fact-check issues, leans opposite to the real ruling
+case:DOC-8096447: clean
+case:DOC-8334829: flags: fact-check issues
+case:DOC-7166568: clean
+case:DOC-7762921: clean
+case:DOC-7869071: clean
+case:DOC-8317424: clean
+case:DOC-7491455: clean
+case:DOC-7190528: clean
+case:DOC-7624463: clean
+case:DOC-7381675: clean
+case:DOC-8272229: clean
+case:DOC-7837368: clean
+case:DOC-7967819: flags: fact-check issues, leans opposite to the real ruling
+case:DOC-7064888: clean
+case:DOC-7699690: clean
+case:DOC-7440119: clean
+case:DOC-7220872: clean
+case:DOC-8249157: clean
+case:DOC-7480852: flags: fact-check issues, leans opposite to the real ruling
+case:DOC-7126021: flags: fact-check issues, leans opposite to the real ruling
+case:DOC-7356204: clean
+case:DOC-7218250: clean
+case:DOC-8393620: flags: fact-check issues
+case:DOC-8241998: clean
+case:DOC-8238024: clean
+case:DOC-7700102: flags: fact-check issues, leans opposite to the real ruling
+case:DOC-7699860: clean
+case:DOC-8154845: clean
+case:DOC-8127808: flags: no citations
+case:DOC-7991182: clean
+case:DOC-7209943: clean
+case:DOC-7326046: clean
+case:DOC-7602363: flags: fact-check issues
+case:DOC-7228669: clean
+case:DOC-7574703: clean

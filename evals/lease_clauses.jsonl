@@ -1,0 +1,36 @@
+{"text": "This Lease shall automatically renew for successive twelve month terms unless Tenant gives written notice at least 90 days before the end of the term.", "flags": ["auto_renewal"]}
+{"text": "At the end of the term, this Lease converts to a month-to-month tenancy that either party may end with 30 days written notice.", "flags": []}
+{"text": "Landlord may increase rent upon thirty days written notice at any time during the term.", "flags": ["rent_increase_rules"]}
+{"text": "Rent is fixed at $1,600 per month for the entire lease term.", "flags": []}
+{"text": "Tenant shall pay a late fee of $150 plus $25 per day for any rent received after the 1st.", "flags": ["late_fees", "extra_fees"]}
+{"text": "Rent received after the 5th of the month incurs a one-time late fee of $50.", "flags": ["late_fees", "extra_fees"]}
+{"text": "A $400 administrative fee is due at signing and is non-refundable.", "flags": ["extra_fees"]}
+{"text": "The security deposit will be returned within 21 days of move-out, less the cost of repairing damage beyond normal wear and tear.", "flags": ["extra_deposit"]}
+{"text": "Landlord will deduct the cost of professional carpet cleaning and full interior repainting from the deposit regardless of the condition of the unit.", "flags": ["extra_deposit", "extra_fees"]}
+{"text": "Tenant is responsible for all repairs to the premises, including plumbing, heating, and appliances, regardless of cause.", "flags": ["repairs_shifted"]}
+{"text": "Tenant shall replace light bulbs and smoke detector batteries. Landlord is responsible for all other repairs not caused by Tenant.", "flags": []}
+{"text": "Landlord and its agents may enter the premises at any time, with or without notice to Tenant.", "flags": ["entry_without_notice"]}
+{"text": "Landlord may enter with 24 hours written notice during reasonable hours, or without notice in an emergency.", "flags": []}
+{"text": "If Tenant vacates early, Tenant forfeits the security deposit and owes an early termination fee equal to two months' rent.", "flags": ["early_exit_penalty", "extra_deposit", "extra_fees"]}
+{"text": "Tenant may end the lease early with 60 days notice if Tenant is called to active military duty.", "flags": []}
+{"text": "Tenant shall indemnify and hold Landlord harmless from all claims, including those arising from Landlord's own negligence.", "flags": ["liability_waiver"]}
+{"text": "Tenant waives the right to a jury trial and waives any statutory notice to quit prior to eviction.", "flags": ["waives_the_act"]}
+{"text": "In any dispute, Tenant shall pay Landlord's attorney fees and collection costs.", "flags": ["legal_costs"]}
+{"text": "In any legal action, the prevailing party may recover reasonable attorney fees.", "flags": []}
+{"text": "Tenant shall not sublet. Guests may not stay more than three nights in any thirty-day period without written consent.", "flags": ["guest_limits", "sublet_ban"]}
+{"text": "Tenant pays electricity and gas plus a mandatory $65 monthly amenity and technology fee.", "flags": ["extra_fees"]}
+{"text": "One cat is permitted with a refundable $300 pet deposit.", "flags": ["extra_deposit"]}
+{"text": "Tenant may peacefully enjoy the premises so long as Tenant complies with this Lease.", "flags": []}
+{"text": "Landlord is not liable for any loss, injury, or damage to persons or property for any reason whatsoever.", "flags": ["liability_waiver"]}
+{"text": "No pets of any kind are permitted on the premises.", "flags": ["no_pets"]}
+{"text": "Tenant shall provide twelve post-dated cheques for the year at signing.", "flags": ["post_dated_cheques"]}
+{"text": "At the end of the term the Tenant must vacate the unit; the tenancy ends automatically.", "flags": ["must_move_out_at_end"]}
+{"text": "Landlord may shut off heat or hot water if rent is more than five days late.", "flags": ["vital_services"]}
+{"text": "This Lease shall automatically renew for successive twelve-month terms unless either party gives written notice at least 60 days before the end of the term.", "flags": ["auto_renewal"]}
+{"text": "At the end of the term, the tenancy will continue month to month on the same terms unless ended in accordance with the Residential Tenancies Act.", "flags": []}
+{"text": "The Landlord shall not, in any event whatsoever, be liable for any personal injury, loss or damage to property suffered by the Tenant or their guests.", "flags": ["liability_waiver"]}
+{"text": "The Tenant agrees to indemnify the Landlord against all claims, costs and damages arising from the Tenant's breach of the rules and regulations.", "flags": ["liability_waiver"]}
+{"text": "There shall be no abatement of rent for any loss of use of the unit before, during or after pest control treatment.", "flags": ["no_rent_abatement"]}
+{"text": "The Landlord shall have 14 days from the start of the tenancy to clean and repair the unit, and there shall be no reduction of rent during this time.", "flags": ["no_rent_abatement"]}
+{"text": "The Tenant shall be responsible for all legal costs on a solicitor and own client basis incurred by the Landlord as a result of the Tenant's breach.", "flags": ["legal_costs"]}
+{"text": "The Tenant shall keep the unit in a reasonable state of cleanliness and is liable for damage caused by their wilful or negligent conduct.", "flags": []}

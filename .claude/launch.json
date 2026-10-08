@@ -1,0 +1,28 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "open-house-preview",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": [
+        "-c",
+        "OPEN_HOUSE_PREVIEW=1 .venv/bin/uvicorn realtor.web.app:app --port 8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "open-house",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": [
+        "realtor.web.app:app",
+        "--port",
+        "8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "open-house-attach",
+      "url": "http://localhost:8000"
+    }
+  ]
+}

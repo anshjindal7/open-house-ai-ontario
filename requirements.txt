@@ -1,0 +1,10 @@
+typesafe-sdk
+mlx-lm
+rank-bm25
+fastembed
+spacy
+httpx
+cryptography
+pypdf
+python-dotenv
+pytest

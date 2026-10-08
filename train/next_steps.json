@@ -1,0 +1,132 @@
+{
+ "_about": "Practical next steps shown under a reviewed guide's answer, split by side. Hand-written and short; every form named here appears in the official LTB guidance in corpus/ (checked Oct 2026). Status: needs review by a person (see /review checklist). 'letter' names a written-request template in realtor/web/static/letters.js.",
+ "steps": {
+  "broken-fixture": {
+   "tenant": ["Tell the landlord in writing what's broken, where, and since when. Add photos and keep a copy.",
+              "Keep paying the full rent while you wait.",
+              "If it isn't fixed in a reasonable time, you can apply to the LTB about maintenance (Form T6)."],
+   "landlord": ["Arrange the repair. To enter for it, give 24 hours' written notice unless the tenant agrees or it's an emergency.",
+                "If the tenant or their guest caused the damage, ask them to cover it; if they won't, you can apply to the LTB (Form L2)."],
+   "letter": "repair"
+  },
+  "pests": {
+   "tenant": ["Report the pests to the landlord in writing, with dates and photos.",
+              "Follow the preparation instructions for treatment so it can work.",
+              "If the landlord doesn't deal with it, you can apply to the LTB about maintenance (Form T6)."],
+   "landlord": ["Arrange treatment and give 24 hours' written notice to enter for it.",
+                "Give tenants the preparation instructions in writing."],
+   "letter": "repair"
+  },
+  "no-heat": {
+   "tenant": ["Tell the landlord right away, in writing as well as by phone.",
+              "If the landlord cut off or withheld the service, you can apply to the LTB (Form T2).",
+              "Many cities also enforce heat and property standards by-laws; your city's by-law office can inspect."],
+   "landlord": ["Restore the service as soon as possible and tell tenants in writing when it will be back.",
+                "If you need to enter to fix it, give written notice unless it's an emergency."],
+   "letter": "repair"
+  },
+  "locks": {
+   "tenant": ["Report a broken lock or door to the landlord in writing, and say how it affects the unit's security.",
+              "Don't change or replace the lock yourself without the landlord's consent.",
+              "If the landlord has locked you out, you can apply to the LTB (Form T2) to be let back in."],
+   "landlord": ["Repair a broken lock or door promptly; it affects the unit's security.",
+                "If you change the locks, give the tenant the new keys."],
+   "letter": "repair"
+  },
+  "entry": {
+   "tenant": ["Keep a record of each entry: date, time, who came in, and whether you got written notice.",
+              "Ask the landlord in writing to give proper notice in future.",
+              "If it keeps happening, you can apply to the LTB about your rights (Form T2)."],
+   "landlord": ["Give written notice at least 24 hours before entering, with the reason and a time between 8 a.m. and 8 p.m.",
+                "Without notice, enter only in an emergency or with the tenant's consent at the time."],
+   "letter": "entry"
+  },
+  "rent-increase": {
+   "tenant": ["Check that the increase came on the LTB form with at least 90 days' notice, and at least 12 months after the last one.",
+              "If you paid an increase that wasn't allowed, you can apply to the LTB to get it back (Form T1)."],
+   "landlord": ["Use the LTB notice form (Form N1) and give at least 90 days' written notice.",
+                "Check whether the yearly guideline applies to the unit before choosing the amount."]
+  },
+  "own-use": {
+   "tenant": ["You don't have to move out just because you got the notice; only an LTB order can end the tenancy.",
+              "Check the notice is Form N12, with at least 60 days and an end date at the end of the term or a rental period.",
+              "If the landlord gave the notice in bad faith, you can apply to the LTB (Form T5)."],
+   "landlord": ["Use Form N12, give at least 60 days' notice, and pay the compensation the Act requires.",
+                "If the tenant doesn't move out, you have to apply to the LTB; you can't remove them yourself."]
+  },
+  "leave-early": {
+   "tenant": ["Ask the landlord whether they'll agree to end the tenancy early, and put the agreement on Form N11.",
+              "If they won't, you can ask to assign the lease to someone else.",
+              "Otherwise give notice on Form N9: at least 60 days, ending no earlier than the end of the fixed term."],
+   "landlord": ["You can agree to end the tenancy early on Form N11.",
+                "If a tenant leaves early without agreement, you have to try to re-rent and keep your losses down."]
+  },
+  "lease-ends": {
+   "tenant": ["You don't have to move out or sign a new lease when the term ends; you become a monthly tenant.",
+              "To move out, give notice on Form N9 at least 60 days before the end of the term."],
+   "landlord": ["The tenancy continues month to month on the same terms unless the tenant gives notice or you both agree to end it."]
+  },
+  "late-rent": {
+   "tenant": ["Pay what you can as soon as you can, and get a receipt for every payment.",
+              "If you get a Form N4 notice, paying the full amount owing before its termination date cancels it.",
+              "Talk to the landlord about a payment plan, and get any agreement in writing."],
+   "landlord": ["Give the tenant a Form N4 notice for the rent owing.",
+                "If it isn't paid, you can apply to the LTB (Form L1); you can't change the locks or remove the tenant yourself.",
+                "A written payment plan is often the quickest way to get paid."]
+  },
+  "damage-deposit": {
+   "tenant": ["A landlord can ask only for a last month's rent deposit and a refundable key deposit.",
+              "If you paid any other deposit, ask for it back in writing; you can also apply to the LTB (Form T1)."],
+   "landlord": ["Collect only a last month's rent deposit (no more than one month's rent) and, if you want, a refundable key deposit."]
+  },
+  "move-out-damage": {
+   "tenant": ["Take dated photos or a video of the unit when you move out.",
+              "Normal wear and tear isn't damage you have to pay for."],
+   "landlord": ["Document the damage with dated photos and keep repair receipts.",
+                "The last month's rent deposit can't be kept for damage.",
+                "To claim from a former tenant, you can apply to the LTB within one year of them moving out (Form L10)."]
+  },
+  "harassment": {
+   "tenant": ["Keep a written record: dates, what was said or done, and any witnesses. Save messages.",
+              "Ask the landlord in writing to stop.",
+              "You can apply to the LTB about your rights (Form T2)."],
+   "landlord": ["Keep a written record of what happened.",
+                "If a tenant's conduct substantially interferes with you or other tenants, you can give a Form N5 notice."]
+  },
+  "renoviction": {
+   "tenant": ["You don't have to move out just because you got the notice; only an LTB order can end the tenancy.",
+              "Check the notice is Form N13, with at least 120 days' notice.",
+              "If you want to move back in after the work, tell the landlord in writing before you leave."],
+   "landlord": ["Use Form N13, give at least 120 days' notice, and have the building permit the work needs.",
+                "Pay the compensation the Act requires and respect a tenant's written request to move back in."]
+  },
+  "noise": {
+   "tenant": ["Keep a log of the noise: dates, times and how it affects you.",
+              "Ask the landlord in writing to deal with it.",
+              "If the landlord doesn't act, you can apply to the LTB about your rights (Form T2)."],
+   "landlord": ["Talk to the tenant causing the noise, then follow up in writing.",
+                "If it substantially interferes with others, you can give a Form N5 notice."],
+   "letter": "disturbance"
+  },
+  "sublet": {
+   "tenant": ["Ask the landlord in writing for consent, with the name of the person you want to sublet or assign to.",
+              "The landlord can't refuse consent unreasonably; if they do, you can apply to the LTB (Form T2)."],
+   "landlord": ["Reply to the request in writing. You can refuse only for a reasonable reason about the proposed person.",
+                "You can charge only your reasonable out-of-pocket costs for giving consent."]
+  },
+  "property-left": {
+   "tenant": ["If you left things behind, contact the landlord in writing right away to arrange to collect them."],
+   "landlord": ["Before disposing of anything, check which rule applies; for an abandoned unit you may need an LTB order (Form L2)."]
+  },
+  "pets": {
+   "tenant": ["A lease term banning pets is void in most rentals, but condo rules can ban them.",
+              "You're responsible for damage, noise or allergies your pet causes."],
+   "landlord": ["You can't evict just because a lease says no pets.",
+                "If a pet causes damage, serious noise or allergic reactions, you can give a Form N5 notice."]
+  },
+  "post-dated": {
+   "tenant": ["You can't be required to give post-dated cheques or automatic payments, but you can choose to."],
+   "landlord": ["Offer other ways to pay; you can ask for, but not require, post-dated cheques or automatic payments."]
+  }
+ }
+}

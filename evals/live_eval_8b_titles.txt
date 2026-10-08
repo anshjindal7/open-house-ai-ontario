@@ -1,0 +1,51 @@
+===== 8b_s240
+FAIL My sink is broken. What should I do?
+       didn't use: rta:34
+FAIL My toilet is leaking, who has to fix it?
+       didn't use: guide:92
+FAIL The oven in my apartment doesn't work anymore.
+       didn't use: guide:92
+ok   I found bed bugs in my bedroom. What now?
+ok   My landlord came into my unit while I was at work without telling me.
+ok   Can the rent go up in the middle of a lease?
+FAIL The tenant is two weeks late on rent. What happens next?
+       didn't use: guide:61
+FAIL My landlord says his son is moving in so I have to leave.
+       didn't use: rta:48
+FAIL The landlord is asking for a $1,000 damage deposit. Can they?
+       didn't use: lease:H
+ok   I came home and the locks were changed.
+ok   Can my landlord evict me for having a baby?
+ok   Can I paint the walls in my rental?
+
+verified by the fact-checker: 12/12
+needed sources the answer used: 16/22
+answers that looped: 0/12
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_8b_s240_titles.jsonl
+===== 8b_s360
+FAIL My sink is broken. What should I do?
+       didn't use: guide:92, guide:94, rta:20, rta:34
+FAIL My toilet is leaking, who has to fix it?
+       didn't use: guide:92, rta:20
+FAIL The oven in my apartment doesn't work anymore.
+       didn't use: guide:92, rta:20
+ok   I found bed bugs in my bedroom. What now?
+FAIL My landlord came into my unit while I was at work without telling me.
+       looped (stopped early)
+FAIL Can the rent go up in the middle of a lease?
+       didn't use: rta:116
+FAIL The tenant is two weeks late on rent. What happens next?
+       didn't use: guide:61
+ok   My landlord says his son is moving in so I have to leave.
+FAIL The landlord is asking for a $1,000 damage deposit. Can they?
+       didn't use: lease:H
+FAIL I came home and the locks were changed.
+       didn't use: guide:54
+       looped (stopped early)
+ok   Can my landlord evict me for having a baby?
+ok   Can I paint the walls in my rental?
+
+verified by the fact-checker: 12/12
+needed sources the answer used: 10/22
+answers that looped: 2/12
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_8b_s360_titles.jsonl

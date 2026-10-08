@@ -1,0 +1,17 @@
+.venv/
+.env
+__pycache__/
+# Raw downloads (1.3 GB of LTB PDFs, the RTA .doc, the lease PDF). Rebuild with pipeline/.
+sources/
+corpus/embeddings_*.npy
+train/adapters/
+train/train_log.txt
+# Model weights and checkpoints (~700 MB; rebuild with train/train.sh)
+train/adapters*/
+train/checkpoints/
+train/eval_adapters/
+.pytest_cache/
+.DS_Store
+.claude/settings.local.json
+# Drafts written by Claude: never training data, kept out of the repo
+train/claude_drafts.jsonl.disabled

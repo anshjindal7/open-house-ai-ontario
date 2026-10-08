@@ -1,0 +1,118 @@
+{
+ "_about": "The short answer that opens each reviewed guide: a plain conclusion, written in the third person so it reads right for a tenant or a landlord. [bN] cites the guide's branch N (its quoted source backs that sentence, and the branch is always shown). 'options' are versions for particular facts; Jev picks one only when it's confident (see SHORT_PICK_MIN), otherwise 'say' is shown, which covers every case. Hand-written; needs review by a person, like the guides themselves.",
+ "short": {
+  "broken-fixture": {
+   "say": "The landlord has to repair or replace it at their cost, unless the tenant, someone living there or a guest damaged it on purpose or through carelessness. [b0] [b1] Either way, the first step is to ask the landlord in writing [b2], and the tenant should keep paying the full rent while waiting. [b3]",
+   "options": {
+    "damaged": {
+     "when": "The tenant, someone living in the unit, or a guest broke or damaged it (on purpose, by accident or through carelessness)",
+     "say": "The tenant is responsible for repairing damage that they, someone living with them or a guest caused on purpose or through carelessness. [b1] Damage from normal use over time (wear and tear) stays the landlord's to fix. [b0]"
+    }
+   }
+  },
+  "pests": {
+   "say": "Dealing with pests is the landlord's job, as part of keeping the unit in good repair and meeting health and maintenance standards. [b0] The tenant has to keep the unit ordinarily clean [b1], and a unit so dirty that it attracts pests can put the tenancy at risk. [b2]"
+  },
+  "no-heat": {
+   "say": "Heat, hot and cold water, electricity, fuel and gas are vital services. [b1] If one stops working, getting it fixed is part of the landlord's duty to keep the unit in good repair [b3], and a landlord can never withhold one they're responsible for supplying. [b0]",
+   "options": {
+    "landlord_cut": {
+     "when": "The landlord shut off, cut off, or is deliberately withholding the service (for example over unpaid rent)",
+     "say": "That isn't allowed. A landlord can't withhold or shut off the reasonable supply of a vital service they're responsible for supplying, such as heat, water, electricity, fuel or gas. [b0] [b2]"
+    },
+    "tenant_bill": {
+     "when": "The tenant's own utility account was disconnected because the tenant didn't pay that bill",
+     "say": "If the tenant pays that utility directly and it was cut off because that bill wasn't paid, it doesn't count as the landlord withholding a vital service. [b2]"
+    }
+   }
+  },
+  "entry": {
+   "say": "In most cases a landlord can enter only with at least 24 hours' written notice, for a reason the law allows, between 8 a.m. and 8 p.m. [b0] [b2] Entry without written notice is allowed only in specific cases, such as an emergency or when the tenant agrees at the time. [b1]",
+   "options": {
+    "already_entered": {
+     "when": "The landlord already came in without giving written notice",
+     "say": "Unless it was an emergency, the tenant agreed at the time, or another exception in the Act applied, a landlord entering without 24 hours' written notice breaks the rules. [b0] [b1]"
+    }
+   }
+  },
+  "rent-increase": {
+   "say": "A landlord can raise the rent only once every 12 months, with at least 90 days' written notice, and usually by no more than the yearly guideline. [b1] [b0] [b2] An increase without the proper notice is void. [b3]"
+  },
+  "own-use": {
+   "say": "A landlord can end a tenancy so that they, an immediate family member or a caregiver can move in, but only in good faith and for someone who will live there for at least one year. [b0] The landlord has to pay one month's rent in compensation or offer another unit the tenant accepts [b1], and the tenant doesn't have to move out unless they agree or the LTB orders it."
+  },
+  "leave-early": {
+   "say": "During a fixed term, a tenant usually can't end the lease early on their own. The ways out are agreeing with the landlord, assigning the lease to someone else, or an LTB order. [b0] A tenant who just leaves can still owe rent, although the landlord has to take reasonable steps to keep their losses down. [b3]"
+  },
+  "lease-ends": {
+   "say": "When a fixed-term lease ends, the tenancy carries on month to month on the same terms. Nobody has to move out or sign a new lease. [b0] [b2] It ends only in the ways the Act allows, such as a proper notice or an agreement to end it. [b1]"
+  },
+  "late-rent": {
+   "say": "If rent isn't paid when it's due, the landlord can give a notice to end the tenancy for non-payment. [b0] That notice is void if the tenant pays all the rent owing before the landlord applies to the LTB. [b1] Only the LTB can order an eviction; a landlord can't remove a tenant or change the locks on their own.",
+   "options": {
+    "nsf": {
+     "when": "The tenant's rent cheque or payment bounced or was returned (NSF), and the question is about what can be charged for it",
+     "say": "For a returned (NSF) payment, the landlord's administration charge can't be more than $20.00 [b3], plus the actual NSF charges their bank made. It's a separate question from the rent itself, which is still owed."
+    }
+   }
+  },
+  "damage-deposit": {
+   "say": "A landlord can collect only two deposits: a rent deposit of no more than one month's rent, which goes toward the last month's rent, and a refundable key deposit. [b0] [b1] [b2] Any other deposit, such as a damage, pet or security deposit, isn't allowed. [b0]"
+  },
+  "move-out-damage": {
+   "say": "A landlord can't take damage costs out of the rent deposit: it has to be used for the rent for the last rental period. [b2] A tenant does have to pay for damage that they, someone living with them or a guest caused on purpose or through carelessness [b1], and if they won't, the landlord can apply to the LTB for the cost. [b0]",
+   "options": {
+    "moved_out": {
+     "when": "The tenant has already moved out and the landlord wants to be paid for damage",
+     "say": "A landlord who wants a former tenant to pay for damage can apply to the LTB for the reasonable repair costs [b0], up to one year after the tenant moved out. [b3] The rent deposit can't be kept for damage; it has to be used for the last rental period's rent. [b2]"
+    }
+   }
+  },
+  "locks": {
+   "say": "A broken lock or door is the landlord's to repair, as part of keeping the unit in good repair. [b0] The tenant shouldn't change or replace a lock without the landlord's consent [b3], and a landlord who changes the locks has to give the tenant new keys. [b2]",
+   "options": {
+    "locked_out": {
+     "when": "The landlord changed the locks or locked the tenant out",
+     "say": "A landlord can't change the locks without giving the tenant replacement keys. [b2] A tenant who has been locked out illegally can apply to the LTB (Form T2) for an order letting them back in. [b4]"
+    },
+    "tenant_changing": {
+     "when": "The tenant changed, or wants to change, the locks",
+     "say": "A tenant can't change the locks without the landlord's consent. [b3] If the lock is broken, the tenant should ask the landlord in writing to repair it. [b1]"
+    }
+   }
+  },
+  "pets": {
+   "say": "A no-pets term in a lease is void, so it can't be enforced on its own. [b0] A landlord can still apply to evict over a pet in some cases, for example if it causes serious noise, damage or allergic reactions, is an inherently dangerous breed, or the condo's rules don't allow pets. [b1]"
+  },
+  "guests": {
+   "say": "A landlord can't stop a tenant from having guests, or require notice or permission for them. [b0] A tenant can usually have a roommate too, as long as the city's occupancy limits are respected. [b1] The tenant is responsible for how their guests behave."
+  },
+  "sublet": {
+   "say": "A tenant can sublet or assign only with the landlord's consent [b0] [b1], and the landlord can't refuse a sublet to a proposed subtenant arbitrarily or unreasonably. [b0]"
+  },
+  "harassment": {
+   "say": "A landlord can't harass, obstruct, coerce, threaten or interfere with a tenant [b0], or substantially interfere with their reasonable enjoyment of the unit. [b1] A tenant facing this can apply to the LTB. The law also bars a tenant from harassing the landlord."
+  },
+  "renoviction": {
+   "say": "A landlord can end a tenancy for renovations only if the work is so extensive that it needs a building permit and the unit empty. [b0] The tenant may have the right to move back in when the work is done [b1], and the tenant doesn't have to move out unless they agree or the LTB orders it."
+  },
+  "post-dated": {
+   "say": "No: a landlord can't require post-dated cheques or automatic payments. [b0] [b1] The tenant can still choose to pay that way. [b1]"
+  },
+  "property-left": {
+   "say": "If the tenant moved out after a notice or an agreement to end the tenancy, the landlord can usually sell, keep or dispose of anything left behind right away. [b0] [b1] Other endings, such as an abandoned unit or an eviction, have different rules."
+  },
+  "noise": {
+   "say": "If a tenant, someone living with them or their guest seriously disturbs others, the landlord can give a notice to end the tenancy. [b0] With a first notice of this kind, the tenant can avoid eviction by stopping the conduct within seven days. [b1]"
+  },
+  "selling": {
+   "say": "A sale doesn't end the tenancy: the new owner takes over the lease with the same rights and duties. [b0] The buyer can end it to move in only if the building has three or fewer units or the rental is a condo unit, and then only in good faith, with proper notice and one month's rent in compensation. [b1] [b2]"
+  },
+  "discrimination": {
+   "say": "A landlord can't discriminate against a tenant on grounds protected by Ontario's Human Rights Code, such as family status, disability or religion. [b0] The LTB may be able to consider it when it's part of an application under the Act; otherwise, including a refusal to rent, it goes to the Human Rights Tribunal of Ontario. [b1] [b2]"
+  },
+  "roommates": {
+   "say": "A roommate who isn't on the lease usually isn't a tenant under the Act. [b0] That means they have to leave when the tenant's tenancy ends [b1], and the rules that protect tenants generally don't cover them."
+  }
+ }
+}

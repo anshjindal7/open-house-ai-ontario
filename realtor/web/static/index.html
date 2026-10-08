@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/app.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 15 16 5l12 10v12H4z' fill='%23fffdf8' stroke='%232f6b4f' stroke-width='2.4' stroke-linejoin='round'/%3E%3Cpath d='M13 27V18h6v9' fill='%23f3e7cf' stroke='%232f6b4f' stroke-width='2'/%3E%3Cpath d='M13 18l-3 2v8' fill='none' stroke='%232f6b4f' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M4 15 16 5l12 10v12H4z" class="house"/>
+        <path d="M13 27V18h6v9" class="doorway"/>
+        <path d="M13 18l-3.5 2.2V28" class="door"/>
+        <circle cx="21.5" cy="14" r="1.6" class="window"/>
+      </svg>
+      <div>
+        <div class="brand-name">Open House</div>
+        <div class="brand-sub">Renting in Ontario, explained for landlords and tenants</div>
+      </div>
+    </div>
+    <div class="status" id="status" aria-live="polite"></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" class="tab" id="tab-ask" aria-selected="true" aria-controls="view-ask">Ask a question</button>
+    <button role="tab" class="tab" id="tab-review" aria-selected="false" aria-controls="view-review">Review a lease</button>
+  </nav>
+
+  <main>
+    <!-- Ask (chat) -->
+    <section id="view-ask" role="tabpanel" aria-labelledby="tab-ask">
+      <div class="role-row">
+        <span class="role-label" id="role-label">I'm the</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="role-label">
+          <label><input type="radio" name="role" value="" checked><span>Rather not say</span></label>
+          <label><input type="radio" name="role" value="tenant"><span>Tenant</span></label>
+          <label><input type="radio" name="role" value="landlord"><span>Landlord</span></label>
+        </div>
+        <span class="role-hint" id="role-hint">Answers are neutral either way.</span>
+        <button class="btn ghost small" id="new-chat" hidden>New conversation</button>
+      </div>
+
+      <div id="thread" class="thread" aria-live="polite">
+        <div class="empty" id="empty">
+          <h2>What's going on?</h2>
+          <p class="muted">Describe a situation, ask a question, or paste wording from a lease. Every answer quotes Ontario law and real Landlord and Tenant Board decisions, so you can check it.</p>
+          <div class="starters" id="starters"></div>
+        </div>
+      </div>
+
+      <form class="composer" id="ask-form">
+        <div class="lease-pill" id="lease-pill" hidden><span id="lease-pill-text">Using your lease</span>
+          <button type="button" class="btn ghost small" id="lease-remove" title="Stop using this lease in answers">Remove</button></div>
+        <textarea id="ask-text" rows="2" placeholder="Ask a question, or paste your lease and then ask about it" aria-label="Your question"></textarea>
+        <div class="composer-row">
+          <label class="check"><input type="checkbox" id="is-clause"> This is wording from a lease</label>
+          <button class="btn primary" type="submit" id="ask-go">Ask</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Review -->
+    <section id="view-review" role="tabpanel" aria-labelledby="tab-review" hidden>
+      <div id="review-start" class="start">
+        <p class="intro">Checks each term of a lease against Ontario's Residential Tenancies Act and explains what the law says about it. Useful before signing one, or before sending one.</p>
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="file" accept=".pdf,.txt" hidden>
+          <svg viewBox="0 0 24 24" class="drop-icon" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+          <span class="drop-title">Drop a lease here</span>
+          <span class="drop-sub">PDF or text file · or <u>choose a file</u></span>
+        </label>
+        <div class="start-actions">
+          <button class="btn ghost" id="paste-toggle">Paste lease text</button>
+          <button class="btn ghost" id="try-sample">Try a sample lease</button>
+        </div>
+        <div id="paste-box" class="paste-box" hidden>
+          <textarea id="paste-text" rows="8" placeholder="Paste the full text of the lease…"></textarea>
+          <button class="btn primary" id="paste-go">Review this lease</button>
+        </div>
+        <p class="privacy" id="privacy"></p>
+      </div>
+
+      <div id="review-run" hidden>
+        <div class="runbar">
+          <div class="runbar-text">
+            <strong id="run-title">Reviewing the lease</strong>
+            <span id="run-sub" class="muted"></span>
+          </div>
+          <div class="runbar-actions">
+            <button class="btn ghost small" id="run-stop">Pause</button>
+            <button class="btn ghost small" id="run-new">New lease</button>
+            <button class="btn ghost small" id="run-ask">Ask about this lease</button>
+          </div>
+          <div class="progress"><div class="progress-fill" id="run-progress"></div></div>
+        </div>
+        <ol class="clauses" id="clauses"></ol>
+      </div>
+    </section>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <span class="kind" id="drawer-kind"></span>
+      <button class="icon-btn" id="drawer-close" aria-label="Close source">×</button>
+    </div>
+    <h3 id="drawer-title"></h3>
+    <div class="drawer-body" id="drawer-body"></div>
+    <p class="drawer-note" id="drawer-note"></p>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <footer>
+    Based on Ontario's <a href="https://www.ontario.ca/laws/statute/06r17" target="_blank" rel="noopener">Residential Tenancies Act, 2006</a>,
+    the Standard Form of Lease, Landlord and Tenant Board guidance, and 2026 LTB decisions.
+    © King's Printer for Ontario, 2026; quotations are not official versions. Contains information licensed
+    under the Open Government Licence – Ontario. General information, not legal advice. For help with a
+    specific situation, call the LTB at 1-888-332-3234 or contact a community legal clinic.
+  </footer>
+
+  <template id="clause-tpl">
+    <li class="clause" data-state="queued">
+      <div class="clause-head">
+        <span class="clause-num"></span>
+        <span class="clause-title"></span>
+        <span class="badge"></span>
+      </div>
+      <div class="flags"></div>
+      <blockquote class="clause-text"></blockquote>
+      <div class="clause-actions"><button class="btn ghost small check-now">Check this now</button></div>
+      <div class="answer-slot"></div>
+    </li>
+  </template>
+
+  <script src="/static/letters.js"></script>
+  <script src="/static/app.js" type="module"></script>
+</body>
+</html>

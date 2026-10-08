@@ -1,0 +1,83 @@
+===== 8b_s240
+FAIL My sink is broken. What should I do?
+       invented heading: If the first step
+       invented heading: Don't hold back rent
+FAIL My toilet is leaking, who has to fix it?
+       invented heading: If it broke from normal use or age (the first step)
+       invented heading: If the first step failed
+       invented heading: What the standard lease says
+FAIL The oven in my apartment doesn't work anymore.
+       invented heading: If the first step either way
+FAIL I found bed bugs in my bedroom. What now?
+       invented heading: If the first step was taken
+       invented heading: If a tenant is the first to act
+       invented heading: What the standard says
+FAIL My landlord came into my unit while I was at work without telling me.
+       wrong source: Hours and frequency → [3] LTB Interpretation Guideline 19: The Landlords Right of Entry into a Rental Unit, "Legislation
+FAIL Can the rent go up in the middle of a lease?
+       invented heading: The first step
+       invented heading: The first step
+       invented heading: The first step
+FAIL The tenant is two weeks late on rent. What happens next?
+       invented heading: If the first step
+       invented heading: If the first step
+       invented heading: If the first step
+       invented heading: If the first step
+ok   My landlord says his son is moving in so I have to leave.
+FAIL The landlord is asking for a $1,000 damage deposit. Can they?
+       invented heading: The first step
+FAIL I came home and the locks were changed.
+       invented heading: The first step
+ok   Can my landlord evict me for having a baby?
+ok   Can I paint the walls in my rental?
+
+verified by the fact-checker: 12/12
+branch headings citing the right source: 8/9
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_8b_s240.jsonl
+===== 8b_s360
+ok   My sink is broken. What should I do?
+ok   My toilet is leaking, who has to fix it?
+ok   The oven in my apartment doesn't work anymore.
+FAIL I found bed bugs in my bedroom. What now?
+       wrong source: The landlord's duty → [1] Residential Tenancies Act, 2006, s. 30: Order, repair, comply with standards
+FAIL My landlord came into my unit while I was at work without telling me.
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+       wrong source: Hours and frequency → [2] Residential Tenancies Act, 2006, s. 26: Entry without notice, emergency, consent
+ok   Can the rent go up in the middle of a lease?
+FAIL The tenant is two weeks late on rent. What happens next?
+       invented heading: How often
+       invented heading: What the standard lease says
+FAIL My landlord says his son is moving in so I have to leave.
+       invented heading: A major reason
+       invented heading: A legal eviction
+FAIL The landlord is asking for a $1,000 damage deposit. Can they?
+       invented heading: How the Board handles it
+ok   I came home and the locks were changed.
+ok   Can my landlord evict me for having a baby?
+ok   Can I paint the walls in my rental?
+
+verified by the fact-checker: 12/12
+branch headings citing the right source: 7/32
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_8b_s360.jsonl

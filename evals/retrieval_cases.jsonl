@@ -1,0 +1,15 @@
+{"q": "Tenant shall pay a damage deposit of $500", "want": ["105"]}
+{"q": "No pets allowed in the unit", "want": ["14"]}
+{"q": "Landlord may increase the rent at any time during the lease", "want": ["119", "116"]}
+{"q": "A $400 non-refundable administration fee is due at signing", "want": ["134"]}
+{"q": "If Tenant breaks the lease all remaining rent becomes due immediately", "want": ["15"]}
+{"q": "Tenant must pay for all repairs including the furnace", "want": ["20"]}
+{"q": "Landlord may enter the unit at any time without notice", "want": ["26", "27"]}
+{"q": "Tenant may not sublet or assign the lease", "want": ["95", "97"]}
+{"q": "Landlord may change the locks if rent is late", "want": ["24", "35"]}
+{"q": "Tenant must move out at the end of the one-year term", "want": ["37", "38"]}
+{"q": "Landlord can shut off heat or water if tenant does not pay", "want": ["21"]}
+{"q": "Tenant must provide post-dated cheques for the year", "want": ["108"]}
+{"q": "Last month's rent deposit does not earn interest", "want": ["106"]}
+{"q": "Key deposit of $300 not refundable", "want": ["134", "105"]}
+{"q": "Lease is void if tenant has guests", "want": ["4", "22"]}

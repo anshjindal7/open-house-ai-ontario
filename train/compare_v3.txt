@@ -1,0 +1,189 @@
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 5140.08it/s]
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 6455.48it/s]
+========================================================================================== 
+Q: [name] (the 'Tenant') applied for an order determining that [name] (the 'Landlord') and [name] (the ‘Purchaser') gave a notice of termination in bad Who won at the LTB, and why?
+
+--- base ---
+The **Tenant won** at the Landlord and Tenant Board (LTB).
+
+### Why?
+
+According to **LTB decision 2026 ONLTB 43012 (T5, 2026-06-05)**, the Board ordered the Purchaser to pay the Tenant a total of **$6,036.00**, which included:
+
+- **$4,980.00** for increased rent the Tenant incurred or will incur for one year after vacating the unit; and  
+- **$1,008.00** for the Tenant’s reasonable moving expenses.
+
+This outcome was based on the Board’s finding that the **Tenant proved, on a balance of probabilities**, each of the following under **section 57(1)(b)** of the *Residential Tenancies Act, 2006* (RTA):
+
+1. The Landlord gave the Tenant an N12 notice of termination under section 49 of the Act;  
+2.
+
+--- tuned ---
+<think>
+
+</think>
+
+In [6] LTB decision 2026 ONLTB 43012 (T5, 2026-06-05), the Board see what was ordered.
+What was ordered: "The total amount the Purchaser shall pay the Tenant is $6,036.00. This amount represents: • $4,980.00 for increased rent the Tenant has incurred or will incur for one year after vacating the rental unit. • $1,008.00 for the reasonable moving expenses that the Tenant incurred as a"
+Why: "Subsection 57(1)(b) of the Residential Tenancies Act, 2006 (the ‘Act') requires the Tenant to prove each of the following on a balance of probabilities: • The Landlord gave the Tenant an N12 notice of termination under section 49 of the Act; • The Tenant vacated the rental unit as a res
+
+--- reference ---
+In [6] LTB decision 2026 ONLTB 43012 (T5, 2026-06-05), the Board see what was ordered.
+What was ordered: "The total amount the Purchaser shall pay the Tenant is $6,036.00. This amount represents: • $4,980.00 for increased rent the Tenant has incurred or will incur for one year after vacating the rental unit. • $1,008.00 for the reasonable moving expenses that the Tenant incurred as a"
+Why: "Subsection 57(1)(b) of the Residential Tenancies Act, 2006 (the ‘Act') requires the Tenant to prove each o
+
+1/40========================================================================================== 
+Q: The lease mentions definitions. What does the law say?
+
+--- base ---
+The law says that **definitions in a lease**—such as "landlord," "housing charges," or "regular monthly housing charges"—are given meaning by the **Residential Tenancies Act, 2006 (RTA)**, and where the lease uses terms like these, the definitions in the RTA govern, especially if they conflict with other provisions.
+
+Specifically:
+
+- **Section 5 of the RTA (not listed in your sources, but implied by context)** provides definitions for key terms used throughout the Act, including "landlord," "tenant," and "housing charges."  
+- **Section 182.4 of the RTA** defines terms such as "housing charges," "member," and "regular monthly housing charges" with the same meaning as in **Part V.1** of the A
+
+--- tuned ---
+<think>
+
+</think>
+
+[2] RTA s. 182.4 (Definitions) says:
+"In this Part, “housing charges”, “member” and “regular monthly housing charges” have the same meanings as in Part V.1."
+
+--- reference ---
+[2] RTA s. 182.4 (Definitions) says:
+"In this Part, “housing charges”, “member” and “regular monthly housing charges” have the same meanings as in Part V.1."
+
+2/40========================================================================================== 
+Q: [name] (the 'Tenant') applied for an order determining that [name] Inc. (the 'Landlord') collected or retained money Who won at the LTB, and why?
+
+--- base ---
+The tenant won at the Landlord and Tenant Board (LTB).
+
+**Why?**  
+The LTB determined that the landlord collected or retained money in contravention of the Residential Tenancies Act, 2006. Specifically, the tenant applied for an order determining that the landlord collected or retained money, and the LTB found in the tenant’s favour.
+
+According to **LTB decision LTB-T-076431-25 (T1, 2026-05-11)**, the Board ordered the landlord to pay the tenant a total of **$689.57**, which includes:
+- $500.00 for the illegal charge collected,
+- $141.57 for interest on the last month's rent deposit, and
+- $48.00 for the cost of filing the application.
+
+This decision is grounded in **section 135(1)** of the 
+
+--- tuned ---
+<think>
+
+</think>
+
+In [6] LTB decision LTB-T-076431-25 (T1, 2026-05-11), the Board decided the case in the tenant's favour.
+What was ordered: "The total amount the Landlord shall pay the Tenant is $689.57. This amount represents: • $500.00 for the illegal charge collected. • $141.57 for interest on the last month's rent deposit. • $48.00 for the cost of filing the application."
+Why: "Section 105(1) of the Act provides that the only security deposit permitted is a rent deposit collected in accordance with s.106. Pursuant to section 106(2) of the Act, the amount of a rent deposit shall not be more than the amount of rent for one month."
+
+--- reference ---
+In [6] LTB decision LTB-T-076431-25 (T1, 2026-05-11), the Board decided the case in the tenant's favour.
+What was ordered: "The total amount the Landlord shall pay the Tenant is $689.57. This amount represents: • $500.00 for the illegal charge collected. • $141.57 for interest on the last month's rent deposit. • $48.00 for the cost of filing the application."
+Why: "Section 105(1) of the Act provides that the only security deposit permitted is a rent deposit collected in accordance with s.106. Pu
+
+3/40========================================================================================== 
+Q: What are the rules for landlords and tenants in Ontario about acceleration clause void?
+
+--- base ---
+The rules for landlords and tenants in Ontario about acceleration clauses are clearly defined in the **Residential Tenancies Act, 2006 (RTA)**.
+
+According to **Source [1]**:
+
+> *A provision in a tenancy agreement providing that all or part of the remaining rent for a term or period of a tenancy or a specific sum becomes due upon a default of the tenant in paying rent due or in carrying out an obligation is void.*
+
+### Summary of the Rule:
+- **Any clause that requires a tenant to pay the full remaining balance of rent (or a specific sum) immediately upon a default—such as missing a rent payment or failing to perform an obligation—is void and unenforceable.**
+- This means landlords **cannot le
+
+--- tuned ---
+<think>
+
+</think>
+
+[1] RTA s. 15 (Acceleration clause void) says:
+"A provision in a tenancy agreement providing that all or part of the remaining rent for a term or period of a tenancy or a specific sum becomes due upon a default of the tenant in paying rent due or in carrying out an obligation is void."
+
+--- reference ---
+[1] RTA s. 15 (Acceleration clause void) says:
+"A provision in a tenancy agreement providing that all or part of the remaining rent for a term or period of a tenancy or a specific sum becomes due upon a default of the tenant in paying rent due or in carrying out an obligation is void."
+
+4/40========================================================================================== 
+Q: Here is a real Landlord and Tenant Board application: [name] (the 'Tenant') applied for an order determining that [name] (the 'Landlord') collected or retained money How did the Board decide?
+
+--- base ---
+The Landlord and Tenant Board (LTB) decided in the **tenant's favour**.
+
+Specifically, in **LTB decision 2026 ONLTB 2758 (T1, 2026-01-07)**, the tenant applied for an order determining that the landlord collected or retained money. The Board found that:
+
+- No tenancy agreement was entered into, nor did one take effect.
+- No vacant possession was given to the landlord.
+- The parties continued to negotiate both price and time of move-in.
+- No keys were exchanged.
+- The landlord never gained the right to occupy the rental unit.
+
+**Result:** The Board ordered the total amount the landlord shall pay the tenant to be **$500.00**, which includes:
+- **$500.00** for the illegal charge collected.
+- **
+
+--- tuned ---
+<think>
+
+</think>
+
+In [6] LTB decision 2026 ONLTB 2758 (T1, 2026-01-07), the Board decided the case in the tenant's favour.
+What was ordered: "The total amount the Landlord shall pay the Tenant is $500.00. This amount represents: • $500.00 for the illegal charge collected. • $48.00 for the cost of filing the application."
+Why: "In this present case, the facts before me are that no tenancy agreement was entered into, nor did one take effect, and no vacant possession was given to [name]. The parties continued to negotiate both price and time of move-in. I find no tenancy agreement took effect nor was one entered into. No keys were exchanged. [name] never gained the right to occupy the rental u
+
+--- reference ---
+In [6] LTB decision 2026 ONLTB 2758 (T1, 2026-01-07), the Board decided the case in the tenant's favour.
+What was ordered: "The total amount the Landlord shall pay the Tenant is $500.00. This amount represents: • $500.00 for the illegal charge collected. • $48.00 for the cost of filing the application."
+Why: "In this present case, the facts before me are that no tenancy agreement was entered into, nor did one take effect, and no vacant possession was given to [name]. The parties continued to neg
+
+5/40========================================================================================== 
+Q: Is there an Ontario rule about review of work order?
+
+--- base ---
+Yes, there is an Ontario rule about review of a work order under the Residential Tenancies Act, 2006 (RTA).
+
+According to **source [2]**, the Residential Tenancies Act, 2006, section 226, provides for a review of an inspector’s work order:
+
+> (1) If a landlord who has received an inspector’s work order is not satisfied with its terms, the landlord may, within 20 days after the day the order is issued, apply to the Board for a review of the work order.  
+> (2) On an application under subsection (1), the Board may, by order,  
+> (a) confirm or vary the inspector’s work order;  
+> (b) rescind the work order, if it finds that the landlord has complied with it; or  
+> (c) quash the work order.
+
+T
+
+--- tuned ---
+<think>
+
+</think>
+
+[2] RTA s. 226 (Review of work order) says:
+"(1)  If a landlord who has received an inspector’s work order is not satisfied with its terms, the landlord may, within 20 days after the day the order is issued, apply to the Board for a review of the work order.
+[Order]
+(2)  On an application under subsection (1), the Board may, by order,
+(a)	confirm or vary the inspector’s work order;
+(b)	rescind the work order, if it finds that the landlord has complied with it; or
+(c)	quash the work order."
+
+--- reference ---
+[2] RTA s. 226 (Review of work order) says:
+"(1)  If a landlord who has received an inspector’s work order is not satisfied with its terms, the landlord may, within 20 days after the day the order is issued, apply to the Board for a review of the work order.
+[Order]
+(2)  On an application under subsection (1), the Board may, by order,
+(a)	confirm or vary the inspector’s work order;
+(b)	rescind the work order, if it finds that the landlord has complied with it; or
+(c)	quash the work order."
+
+6/407/408/409/4010/4011/4012/4013/4014/4015/4016/4017/4018/4019/4020/4021/4022/4023/4024/4025/4026/4027/4028/4029/4030/4031/4032/4033/4034/4035/4036/4037/4038/4039/4040/40
+metric                    base          tuned
+right source      26/36    72%   35/36    97%
+faithful          12/27    44%   33/38    87%
+right outcome      8/29    28%   28/29    97%
+abstains           1/4     25%    2/4     50%

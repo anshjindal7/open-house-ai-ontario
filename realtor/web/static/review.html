@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open House · Review drafts</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <style>
+    .review { display: grid; gap: 14px; }
+    .counts { display: flex; gap: 8px; flex-wrap: wrap; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+    .card h3 { font: 600 15px var(--sans); margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .facts { white-space: pre-wrap; }
+    .truth { border-left: 4px solid var(--accent); }
+    .flags-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .src { border-top: 1px solid var(--line); padding: 8px 0; font-size: 13.5px; white-space: pre-wrap; }
+    .src summary { cursor: pointer; font-weight: 500; }
+    textarea.edit { min-height: 130px; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .done { text-align: center; padding: 40px 0; }
+    .rules { font-size: 13.5px; color: var(--muted); }
+    .rules li { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div>
+        <div class="brand-name">Review drafts</div>
+        <div class="brand-sub">Approved short answers become training data for the interpreter</div>
+      </div>
+    </div>
+    <div class="counts" id="counts"></div>
+  </header>
+  <main class="review" id="main">
+    <details class="card rules">
+      <summary><strong>What to check</strong> (open for the checklist)</summary>
+      <ul>
+        <li>Every claim is supported by the cited source. Click a source to read it.</li>
+        <li>It applies the law to <em>these</em> facts, and says which way they point, whichever side that is.</li>
+        <li>If a deciding fact is missing, it says so instead of guessing.</li>
+        <li>For real cases: does it agree with how the Board actually ruled? If not, edit or reject.</li>
+        <li>Plain language, 2 to 4 sentences, no invented numbers or deadlines.</li>
+        <li>Reject drafts that predict who would win: the model gets outcomes wrong most of the time. A good short answer says which rules apply to these facts; the real decisions shown after it speak to outcomes.</li>
+      </ul>
+    </details>
+    <div id="slot"></div>
+  </main>
+  <script type="module">
+    const $ = (s, el = document) => el.querySelector(s);
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+    let drafts = [];
+
+    async function load() {
+      const data = await (await fetch("/api/drafts")).json();
+      drafts = data.drafts;
+      $("#counts").innerHTML = Object.entries(data.counts).map(([k, v]) => `<span class="pill ${k === "pending" ? "warn" : "on"}">${v} ${k}</span>`).join("");
+      show();
+    }
+
+    function show() {
+      const d = drafts.find((x) => x.status === "pending");
+      if (!d) {
+        $("#slot").innerHTML = drafts.length
+          ? `<div class="card done"><h2>All caught up</h2><p class="muted">Run <code>python -m train.interpret.draft --limit 50</code> for more.</p></div>`
+          : `<div class="card done"><h2>No drafts yet</h2><p class="muted">Run <code>python -m train.interpret.draft --limit 50</code> to create some.</p></div>`;
+        return;
+      }
+      const check = d.check.ok ? `<span class="pill on">fact-check passed</span>` :
+        d.check.issues.map((i) => `<span class="flag medium" title="${esc(i.text)}">${esc(i.kind)}: ${esc(i.detail)}</span>`).join("");
+      $("#slot").innerHTML = `
+        <div class="card"><h3>Facts and question</h3><div class="facts">${esc(d.question)}</div></div>
+        ${d.truth_note ? `<div class="card truth"><h3>What really happened</h3>${esc(d.truth_note)}</div>` : ""}
+        <div class="card"><h3>Draft short answer · ${esc(d.model.split("/").pop())}</h3>
+          <textarea class="edit" id="final">${esc(d.draft)}</textarea>
+          <div class="flags-row">${check}${(d.flags || []).map((f) => `<span class="flag high">${esc(f)}</span>`).join("")}</div>
+        </div>
+        <div class="card"><h3>Sources the draft could see</h3>
+          ${d.sources.map((s, i) => `<details class="src"><summary>[${i + 1}] ${esc(s.label)}</summary>${esc(s.text)}</details>`).join("")}
+        </div>
+        <div class="actions">
+          <button class="btn primary" id="approve">Approve as is</button>
+          <button class="btn ghost" id="save-edit">Save my edit</button>
+          <button class="btn ghost" id="reject">Reject</button>
+          <input id="note" placeholder="Optional note" style="flex:1;min-width:180px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)">
+        </div>`;
+      const post = (url, body) => fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then((r) => r.json());
+      const decide = async (status) => {
+        const final = $("#final").value.trim();
+        if (status === "edited") {  // check the edit before saving it
+          const c = await post(`/api/drafts/check/${encodeURIComponent(d.id)}`, { text: final });
+          if (!c.ok && !confirm(`The fact-checker couldn't match ${c.issues.length} part(s) of your edit to the sources:\n\n` +
+              c.issues.map((i) => "• " + i.detail).join("\n") + "\n\nSave it anyway?")) return;
+        }
+        await post(`/api/drafts/${encodeURIComponent(d.id)}`, { status, final, note: $("#note").value || null });
+        d.status = status;
+        load();
+      };
+      $("#approve").onclick = () => decide($("#final").value.trim() === d.draft.trim() ? "approved" : "edited");
+      $("#save-edit").onclick = () => decide("edited");
+      $("#reject").onclick = () => decide("rejected");
+    }
+    load();
+  </script>
+</body>
+</html>

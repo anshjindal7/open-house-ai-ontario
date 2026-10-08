@@ -1,0 +1,144 @@
+===== v3
+FAIL My sink is broken. What should I do?
+       invented heading: The landlord's duty
+       invented heading: The tenant's duty
+       invented heading: If the tenant doesn't repair it after being told
+FAIL My toilet is leaking, who has to fix it?
+       wrong source: If the tenant, someone living there, or a guest damaged it on purpose or through carelessness → [1] Residential Tenancie
+       wrong source: Don't hold back rent while you wait → [2] Residential Tenancies Act, 2006, s. 30: Order, repair, comply with standards
+       quote: not found word for word in source [2]
+FAIL The oven in my apartment doesn't work anymore.
+       quote: not found word for word in source [1]
+FAIL I found bed bugs in my bedroom. What now?
+       quote: not found word for word in source [4]
+FAIL My landlord came into my unit while I was at work without telling me.
+       wrong source: With 24 hours' written notice → [3] LTB Interpretation Guideline 19: The Landlords Right of Entry into a Rental Unit, "L
+       wrong source: Without written notice → [4] LTB brochure: A Guide to the Residential Tenancies Act, "Information in this guide"
+       quote: not found word for word in source [3]
+       quote: not found word for word in source [4]
+FAIL Can the rent go up in the middle of a lease?
+       invented heading: The rule
+       invented heading: In plain language
+ok   The tenant is two weeks late on rent. What happens next?
+ok   My landlord says his son is moving in so I have to leave.
+ok   The landlord is asking for a $1,000 damage deposit. Can they?
+FAIL I came home and the locks were changed.
+       quote: not found word for word in source [3]
+ok   Can my landlord evict me for having a baby?
+FAIL Can I paint the walls in my rental?
+       quote: not found word for word in source [3]
+
+verified by the fact-checker: 6/12
+branch headings citing the right source: 9/13
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_v3.jsonl
+===== v4s200
+FAIL My sink is broken. What should I do?
+       invented heading: If the landlord, someone living there, or a guest damaged it on purpose or through carelessness
+       invented heading: If the tenant, someone living there, or a guest damaged it through carelessness or through a dirty environment
+       invented heading: If the landlord, someone living there, or a guest damaged it through carelessness or through a dirty environment
+FAIL My toilet is leaking, who has to fix it?
+       wrong source: If the tenant, someone living there, or a guest damaged it on purpose or through carelessness → [1] Residential Tenancie
+FAIL The oven in my apartment doesn't work anymore.
+       wrong source: If the tenant, someone living there, or a guest damaged it on purpose or through carelessness → [1] Residential Tenancie
+       invented heading: If the landlord, someone living there, or a guest damaged it through carelessness or through a lack of maintenance
+       invented heading: If the tenant, someone living there, or a guest damaged it through carelessness or through a lack of maintenance
+       invented heading: If the tenant, someone living there, or a guest damaged it through carelessness or through a lack of maintenance
+       quote: not found word for word in source [2]
+FAIL I found bed bugs in my bedroom. What now?
+       wrong source: The landlord's duty → [2] Residential Tenancies Act, 2006, s. 117: Compliance by landlord, no notice required
+       invented heading: If the landlord is the one who, through normal care and attention, keeps the unit in good repair
+       invented heading: The landlord's duty to address the infestation
+       quote: not found word for word in source [1]
+       quote: not found word for word in source [2]
+       quote: not found word for word in source [4]
+ok   My landlord came into my unit while I was at work without telling me.
+FAIL Can the rent go up in the middle of a lease?
+       wrong source: How much → [1] Residential Tenancies Act, 2006, s. 119: 12-month rule
+       invented heading: The landlord's first step
+       quote: not found word for word in source [1]
+       quote: not found word for word in source [1]
+FAIL The tenant is two weeks late on rent. What happens next?
+       invented heading: The landlord's second step
+       invented heading: The landlord's third step
+       invented heading: The landlord's fourth step
+       invented heading: The landlord's fifth step
+       quote: not found word for word in source [4]
+       quote: not found word for word in source [2]
+ok   My landlord says his son is moving in so I have to leave.
+ok   The landlord is asking for a $1,000 damage deposit. Can they?
+FAIL I came home and the locks were changed.
+       invented heading: If the landlord is the one who locks the unit
+       invented heading: If the tenant is the one who locks the rental unit
+       invented heading: If a landlord is locked out
+       invented heading: If the tenant is locked out
+       invented heading: If the landlord is locked out
+ok   Can my landlord evict me for having a baby?
+ok   Can I paint the walls in my rental?
+
+verified by the fact-checker: 8/12
+branch headings citing the right source: 6/10
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_v4s200.jsonl
+===== v4
+ok   My sink is broken. What should I do?
+FAIL My toilet is leaking, who has to fix it?
+       wrong source: If the tenant, someone living there, or a guest damaged it on purpose or through carelessness → [3] LTB brochure: Mainte
+       invented heading: If the tenant, someone living there, or a guest damaged it to the point where it can't be fixed
+       quote: not found word for word in source [4]
+FAIL The oven in my apartment doesn't work anymore.
+       wrong source: If the tenant, someone living there, or a guest damaged it on purpose or through carelessness → [1] Residential Tenancie
+       invented heading: If the tenant, someone living there, or a guest damaged it through carelessness or a mistake
+FAIL I found bed bugs in my bedroom. What now?
+       wrong source: The tenant's duty → [2] Residential Tenancies Act, 2006, s. 117: Compliance by landlord, no notice required
+       invented heading: What the rent increase is for
+       invented heading: What the rent increase is for
+       invented heading: If the tenant is having a maintenance or repair problem
+       invented heading: What the rent increase is for
+       invented heading: If the tenant is having a maintenance or repair problem
+       invented heading: If the tenant is having a maintenance or repair problem
+       quote: not found word for word in source [2]
+       quote: not found word for word in source [4]
+       quote: not found word for word in source [4]
+FAIL My landlord came into my unit while I was at work without telling me.
+       wrong source: Hours and frequency → [3] LTB Interpretation Guideline 19: The Landlords Right of Entry into a Rental Unit, "Legislation
+       invented heading: What the rent limit is
+       quote: not found word for word in source [3]
+       quote: not found word for word in source [7]
+FAIL Can the rent go up in the middle of a lease?
+       wrong source: How much → [1] Residential Tenancies Act, 2006, s. 119: 12-month rule
+       invented heading: If the rent can be increased
+       quote: not found word for word in source [3]
+       quote: not found word for word in source [7]
+FAIL The tenant is two weeks late on rent. What happens next?
+       invented heading: The tenant's deadline
+       invented heading: What the rent is for
+       invented heading: What the rent is worth
+       invented heading: What the rent is charged to
+FAIL My landlord says his son is moving in so I have to leave.
+       quote: not found word for word in source [6]
+FAIL The landlord is asking for a $1,000 damage deposit. Can they?
+       wrong source: The only security deposit allowed → [1] Residential Tenancies Act, 2006, s. 106: Rent deposit may be required
+       invented heading: What the rent deposit can be
+       invented heading: What the rent deposit must be used for
+       invented heading: What the rent deposit can be
+       quote: not found word for word in source [2]
+       quote: not found word for word in source [3]
+FAIL I came home and the locks were changed.
+       wrong source: If a tenant is locked out → [2] Residential Tenancies Act, 2006, s. 35: Changing locks
+       invented heading: If the tenant is locked out
+ok   Can my landlord evict me for having a baby?
+FAIL Can I paint the walls in my rental?
+       citation: [8] doesn't match any source
+       citation: [9] doesn't match any source
+       quote: not found word for word in source [2]
+       quote: not found word for word in source [3]
+       quote: not found word for word in source [4]
+       quote: not found word for word in source [5]
+       quote: not found word for word in source [6]
+       quote: not found word for word in source [7]
+       quote: not found word for word in any source
+       quote: not found word for word in any source
+       quote: not found word for word in any source
+
+verified by the fact-checker: 5/12
+branch headings citing the right source: 11/18
+full answers: /Users/anshjindal/Desktop/Open House/evals/live_eval_v4.jsonl
