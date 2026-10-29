@@ -228,3 +228,11 @@ from the playbook, not the model.
 - [x] Example decisions whose reason points the other way from the outcome show what was ordered instead
 - [ ] Review the short answers (you or a paralegal), same as the next steps
 - [ ] Retrain the fallback model without the AI-written guide wording in train/scenarios.json
+
+## 2026-10-29: Hosting for testers
+- [x] Hosted mode (OPEN_HOUSE_HOSTED=1): Jev-only answers, draft review off, per-visitor and daily limits,
+      body-size limits, beta notice, privacy note, no access log
+- [x] Thumbs up/down feedback on answers, scrubbed of personal details; synced to a private HF dataset if set up
+- [x] Dockerfile, requirements-server.txt, deploy/upload_space.py for a Hugging Face Space
+- [ ] Create the Space, add the TYPESAFE_API_KEY secret, upload (you)
+- [ ] Read the feedback weekly and turn the thumbs-down into fixes or new guides

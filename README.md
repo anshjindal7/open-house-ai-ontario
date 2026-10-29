@@ -143,6 +143,34 @@ Training answers quote the official sources verbatim. Known issue: the guides' c
 (openers, headings and example questions in `train/scenarios.json`) was written with an AI assistant,
 and the current model was trained on it. The next retrain leaves it out (see `ROADMAP.md`).
 
+## Hosting
+
+The hosted version runs in Docker (`Dockerfile`, `requirements-server.txt`) with
+`OPEN_HOUSE_HOSTED=1`. In that mode:
+- Jev answers every question, and the local model is never loaded.
+- The draft-review pages are switched off.
+- Each visitor gets a few questions and lease scans per hour, and the whole site has a daily cap.
+  The limits are environment variables listed in `realtor/web/hosting.py`.
+- A beta notice and a privacy note are shown.
+- Answers get thumbs up/down feedback.
+- Nothing visitors type or upload is saved, apart from the feedback they choose to send.
+
+To put it on a [Hugging Face Space](https://huggingface.co/docs/hub/spaces-sdks-docker):
+
+```bash
+pip install huggingface_hub
+hf auth login
+python deploy/upload_space.py YOUR-HF-NAME/open-house-ai-ontario
+```
+
+`hf auth login` asks for a write token. Then, in the Space's **Settings → Variables and secrets**,
+add the secret `TYPESAFE_API_KEY`.
+
+To keep feedback across restarts, also add:
+- `HF_TOKEN`: a write token.
+- `FEEDBACK_DATASET`: for example `YOUR-HF-NAME/open-house-feedback`. A private dataset is created
+  on first use.
+
 ## Checks
 
 ```bash
@@ -166,7 +194,8 @@ The Jev checks need `TYPESAFE_API_KEY`.
 | Folder | What's in it |
 |---|---|
 | `realtor/lease/` | Search, guides and routing, Jev calls, short answers, lease reading and checks, lease figures, fact-checker, privacy scrub |
-| `realtor/web/` | The app: chat, lease review, and `/review` for checking drafted answers |
+| `realtor/web/` | The app: chat, lease review, `/review` for checking drafted answers, and the hosting rules (`hosting.py`) |
+| `deploy/` | Uploading to a Hugging Face Space |
 | `pipeline/` | Downloading and parsing the official sources |
 | `corpus/` | The processed sources the app searches |
 | `train/` | The guides (`scenarios.json`), short answers, next steps, dataset builder, training, Phase 4 drafting |

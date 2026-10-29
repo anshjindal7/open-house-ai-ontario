@@ -29,6 +29,7 @@ from realtor.lease.facts import extract as lease_facts, lines as lease_lines
 from realtor.lease.local_model import ADAPTER_DIR, CHAT_ARGS, build_messages, clause_question, repeating, search_query
 from realtor.lease.sources import retrieve
 from realtor.lease.verify import jev_check, verify
+from realtor.web import hosting
 
 load_dotenv()
 STATIC = Path(__file__).parent / "static"
@@ -37,6 +38,7 @@ PREVIEW = os.environ.get("OPEN_HOUSE_PREVIEW") == "1"
 MIN_CLAUSE_CHARS = 60  # skip headings, signature lines and the like
 
 app = FastAPI(title="Open House lease reader")
+app.middleware("http")(hosting.guard)  # limits and switches for a public server; off on your own machine
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
 _gpu = ThreadPoolExecutor(max_workers=1)  # MLX work stays on one thread
 _model_lock = threading.Lock()
@@ -44,6 +46,8 @@ _model = None
 
 
 def _load_model():
+    if hosting.HOSTED:  # servers have no Apple Silicon; answers come from Jev or not at all
+        raise RuntimeError("The local model isn't available on the hosted version")
     global _model
     with _model_lock:
         if _model is None:
@@ -143,7 +147,34 @@ def status():
         "fine_tuned": (ADAPTER_DIR / "adapters.safetensors").exists(),
         "jev": bool(os.environ.get("TYPESAFE_API_KEY")),
         "model_loaded": _model is not None,
+        "hosted": hosting.HOSTED,
     }
+
+
+@app.on_event("startup")
+def _startup():
+    if hosting.HOSTED:
+        hosting.start_feedback_sync()
+
+
+class Feedback(BaseModel):
+    rating: str  # "up" | "down"
+    question: str = ""
+    comment: str = ""
+    scenario: str | None = None
+    kind: str = ""  # "guide" | "passages"
+
+
+@app.post("/api/feedback")
+def feedback(f: Feedback):
+    """Thumbs up/down on an answer. The question and comment are scrubbed of personal details first."""
+    from realtor.lease.privacy import scrub
+
+    if f.rating not in ("up", "down"):
+        raise HTTPException(400, "rating must be up or down")
+    hosting.save_feedback({"rating": f.rating, "question": scrub(f.question[:1000]), "comment": scrub(f.comment[:2000]),
+                           "scenario": f.scenario, "kind": f.kind[:20]})
+    return {"ok": True}
 
 
 @app.post("/api/ask")
@@ -445,7 +476,7 @@ async def scan(req: ScanRequest):
     checks = {c.key: c for c in CHECKS}
     from realtor.lease.privacy import scrub
 
-    clauses = [Clause(c["index"], c["heading"], scrub(c["text"])) for c in req.clauses]
+    clauses = [Clause(c["index"], c["heading"], scrub(c["text"])) for c in req.clauses[:250]]
     findings = await scan_lease(clauses)
     return {"findings": [{"index": f.clause.index, "fit": fit_label(f.rta_fit),
                           "flags": [{"key": k, "p": p, "severity": checks[k].severity, "law": checks[k].law,

@@ -343,3 +343,10 @@ footer { max-width: 860px; width: 100%; margin: 0 auto; padding: 20px 16px 28px;
 .answer-text p.short-answer { font-size: 16.5px; line-height: 1.55; padding: 10px 14px; border-radius: 10px;
   background: var(--accent-soft); border-left: 3px solid var(--accent); }
 .answer-text p.in-lease { padding: 8px 14px; border-radius: 10px; background: var(--mine-soft); border-left: 3px solid var(--mine); }
+
+/* ---- Hosted version: beta notice and feedback ---- */
+.beta { margin: 0 auto 12px; max-width: 900px; padding: 10px 14px; border-radius: 10px; font-size: 14px;
+  background: var(--case-soft); color: var(--ink, inherit); border: 1px solid var(--line); }
+.feedback { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; }
+.feedback textarea { flex: 1 1 260px; font: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--line);
+  background: transparent; color: inherit; }

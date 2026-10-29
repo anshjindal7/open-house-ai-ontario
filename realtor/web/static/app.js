@@ -20,13 +20,17 @@ async function loadStatus() {
     return status;
   }
   const pills = [];
-  if (status.preview) pills.push(`<span class="pill warn" title="Answers are placeholders built from the sources; the model isn't loaded">Preview mode</span>`);
+  $("#beta").hidden = !status.hosted;
+  if (status.hosted) pills.push(`<span class="pill warn" title="A test version: answers are still being reviewed">Beta</span>`);
+  else if (status.preview) pills.push(`<span class="pill warn" title="Answers are placeholders built from the sources; the model isn't loaded">Preview mode</span>`);
   else pills.push(`<span class="pill ${status.fine_tuned ? "on" : "warn"}" title="${status.fine_tuned ? "Our model, trained on Ontario sources" : "Training not finished: using the untrained base model"}">${status.fine_tuned ? "Ontario model" : "Base model (untrained)"}</span>`);
   pills.push(`<span class="pill ${status.jev ? "on" : ""}" title="${status.jev ? "Jev scans lease clauses first" : "Add TYPESAFE_API_KEY to .env to scan leases with Jev"}">Jev ${status.jev ? "on" : "off"}</span>`);
   $("#status").innerHTML = pills.join("");
-  $("#privacy").textContent = status.jev
-    ? "Answers are written on this computer. With Jev on, clause text is sent to TypeSafe AI to be scanned."
-    : "Everything runs on this computer. The lease isn't sent anywhere.";
+  $("#privacy").textContent = status.hosted
+    ? "What you type or upload is read on our server and isn't saved. With names, emails, phone numbers and addresses removed, it's sent to TypeSafe AI (Jev) to pick and check the answer."
+    : status.jev
+      ? "Answers are written on this computer. With Jev on, clause text is sent to TypeSafe AI to be scanned."
+      : "Everything runs on this computer. The lease isn't sent anywhere.";
   return status;
 }
 
@@ -46,7 +50,11 @@ async function streamAnswer(payload, onSources, onToken, signal, onCheck = () =>
   const res = await fetch("/api/ask", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal,
   });
-  if (!res.ok) throw new Error((await res.json()).detail || res.statusText);
+  if (!res.ok) {
+    const err = new Error((await res.json().catch(() => ({}))).detail || res.statusText);
+    err.status = res.status;
+    throw err;
+  }
   const reader = res.body.getReader();
   const decoder = new TextDecoder();
   let buf = "";
@@ -246,11 +254,14 @@ async function runAnswer(container, payload, signal) {
     out.classList.remove("streaming");
     if (err.name === "AbortError") return { state: "aborted", answer };
     console.warn("answer failed:", err);  // details for debugging; people see a plain message
+    out.innerHTML = `<p class="muted">${[429, 413].includes(err.status) ? esc(err.message)
+      : "Couldn't answer that just now. Please try again in a moment."}</p>`;
     return { state: "error", answer };
   }
   out.classList.remove("streaming");
   paint();
   if (check) showCheck(block, check);
+  if (payload.mode === "question") feedbackRow(block, payload.text, scenario);
   return { state: "done", answer, scenario };
 }
 
@@ -288,6 +299,32 @@ function showSteps(block, data) {
     box.append(btn);
   }
   box.hidden = false;
+}
+
+// Thumbs up/down under each chat answer. On the hosted version this is how testing turns into fixes.
+function feedbackRow(block, question, scenario) {
+  const row = document.createElement("div");
+  row.className = "feedback";
+  row.innerHTML = `<span class="muted">Was this helpful?</span>
+    <button class="btn ghost small" data-r="up" aria-label="Helpful">👍</button>
+    <button class="btn ghost small" data-r="down" aria-label="Not helpful">👎</button>`;
+  const send = async (rating, comment = "") => {
+    try {
+      await fetch("/api/feedback", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rating, question, comment, scenario, kind: scenario ? "guide" : "passages" }) });
+      row.innerHTML = `<span class="muted">Thanks, that helps.</span>`;
+    } catch { row.innerHTML = `<span class="muted">Couldn't send that just now.</span>`; }
+  };
+  row.addEventListener("click", (e) => {
+    const r = e.target.closest("[data-r]")?.dataset.r;
+    if (r === "up") return send("up");
+    if (r !== "down") return;
+    row.innerHTML = `<textarea rows="2" placeholder="What was wrong or missing? (optional; don't include names or addresses)"></textarea>
+      <button class="btn ghost small" type="button">Send</button>`;
+    $("button", row).onclick = () => send("down", $("textarea", row).value.trim());
+    $("textarea", row).focus();
+  });
+  block.append(row);
 }
 
 function showCheck(block, check) {

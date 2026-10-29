@@ -1,0 +1,16 @@
+# What the hosted server needs (Linux). No mlx-lm: the local model only runs on Apple Silicon,
+# and the hosted version answers with Jev. For local development use requirements.txt.
+fastapi==0.142.2
+uvicorn==0.54.0
+python-multipart==0.0.32
+pydantic==2.13.5
+typesafe-sdk==0.7.2
+rank-bm25==0.2.2
+fastembed==0.8.1
+numpy==2.5.3
+spacy==3.8.16
+httpx==0.28.1
+cryptography==50.0.2
+pypdf==6.19.0
+python-dotenv==1.2.4
+huggingface_hub==1.33.0

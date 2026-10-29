@@ -15,3 +15,5 @@ train/eval_adapters/
 .claude/settings.local.json
 # Drafts written by Claude: never training data, kept out of the repo
 train/claude_drafts.jsonl.disabled
+# Feedback from the hosted version (synced to a private dataset, never committed)
+feedback/
