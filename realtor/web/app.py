@@ -411,20 +411,25 @@ async def ask(req: AskRequest):
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
+async def _read_upload(file: UploadFile) -> str:
+    """The text of an uploaded .pdf or .txt lease. The file is deleted as soon as it's read."""
+    suffix = Path(file.filename or "lease.txt").suffix.lower()
+    if suffix not in {".pdf", ".txt"}:
+        raise HTTPException(400, "Upload a .pdf or .txt lease")
+    with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
+        tmp.write(await file.read())
+    try:
+        return load_lease(tmp.name)
+    finally:
+        os.unlink(tmp.name)
+
+
 @app.post("/api/split")
 async def split(file: UploadFile | None = File(None), text: str | None = Form(None), sample: bool = Form(False)):
     if sample:
         lease_text = SAMPLE.read_text()
     elif file is not None:
-        suffix = Path(file.filename or "lease.txt").suffix.lower()
-        if suffix not in {".pdf", ".txt"}:
-            raise HTTPException(400, "Upload a .pdf or .txt lease")
-        with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
-            tmp.write(await file.read())
-        try:
-            lease_text = load_lease(tmp.name)
-        finally:
-            os.unlink(tmp.name)
+        lease_text = await _read_upload(file)
     elif text:
         lease_text = text
     else:
@@ -445,19 +450,30 @@ class LeaseText(BaseModel):
     text: str
 
 
-@app.post("/api/lease")
-def attach_lease(req: LeaseText):
-    """Split a lease pasted into the chat into terms, with names and contact details removed.
+def _lease_terms(text: str) -> dict:
+    """A lease's terms for the chat, with names and contact details removed, and its standard-form values.
 
     Nothing is stored here: the browser keeps the terms for this conversation and sends them
     with each question, so a new conversation starts without them.
     """
     from realtor.lease.privacy import scrub
 
-    clauses = [c for c in split_clauses(req.text) if not c.form_detail and len(c.text) >= MIN_CLAUSE_CHARS]
+    clauses = [c for c in split_clauses(text) if not c.form_detail and len(c.text) >= MIN_CLAUSE_CHARS]
     if not clauses:
-        raise HTTPException(422, "Couldn't find any lease terms in that text.")
-    return {"terms": [{"heading": c.heading, "text": scrub(c.text)} for c in clauses], "facts": lease_facts(req.text)}
+        raise HTTPException(422, "Couldn't find any lease terms in that. If it's a scanned PDF, it needs OCR first.")
+    return {"terms": [{"heading": c.heading, "text": scrub(c.text)} for c in clauses], "facts": lease_facts(text)}
+
+
+@app.post("/api/lease")
+def attach_lease(req: LeaseText):
+    """A lease pasted into the chat."""
+    return _lease_terms(req.text)
+
+
+@app.post("/api/lease-file")
+async def attach_lease_file(file: UploadFile = File(...)):
+    """A lease file attached in the chat."""
+    return _lease_terms(await _read_upload(file))
 
 
 class ScanRequest(BaseModel):

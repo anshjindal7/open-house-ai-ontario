@@ -57,9 +57,13 @@
       <form class="composer" id="ask-form">
         <div class="lease-pill" id="lease-pill" hidden><span id="lease-pill-text">Using your lease</span>
           <button type="button" class="btn ghost small" id="lease-remove" title="Stop using this lease in answers">Remove</button></div>
-        <textarea id="ask-text" rows="2" placeholder="Ask a question, or paste your lease and then ask about it" aria-label="Your question"></textarea>
+        <textarea id="ask-text" rows="2" placeholder="Ask a question, or attach or paste your lease and then ask about it" aria-label="Your question"></textarea>
         <div class="composer-row">
-          <label class="check"><input type="checkbox" id="is-clause"> This is wording from a lease</label>
+          <div class="composer-tools">
+            <button type="button" class="btn ghost small" id="attach-lease" title="Attach your lease (PDF or text) to use it in answers">Attach a lease</button>
+            <input type="file" id="attach-file" accept=".pdf,.txt" hidden>
+            <label class="check"><input type="checkbox" id="is-clause"> This is wording from a lease</label>
+          </div>
           <button class="btn primary" type="submit" id="ask-go">Ask</button>
         </div>
       </form>

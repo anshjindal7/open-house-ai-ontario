@@ -106,8 +106,8 @@ OPEN_HOUSE_PREVIEW=1 uvicorn realtor.web.app:app --port 8000
 
 - **Ask a question:** type it in the chat. Pick "Tenant" or "Landlord" if you want next steps for
   your side only.
-- **Ask about your lease:** paste the whole lease into the chat. It's kept for that conversation
-  only, with personal details removed.
+- **Ask about your lease:** click **Attach a lease** (PDF or text), drop the file on the chat box,
+  or paste the whole lease. It's kept for that conversation only, with personal details removed.
 - **Review a lease:** use the Review tab to upload a PDF or text file, or paste it.
 - **From the terminal:**
 

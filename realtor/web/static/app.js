@@ -436,11 +436,13 @@ function setLease(terms, facts = {}) {
 }
 $("#lease-remove").addEventListener("click", () => setLease([]));
 
-async function shareLease(text) {
+// A lease shared in the chat, pasted (text) or attached (file). Kept for this conversation only.
+async function shareLease(text, file = null) {
+  if (chat.busy) return;
   $("#empty").hidden = true;
   $("#new-chat").hidden = false;
   const thread = $("#thread");
-  const mine = bubble(`Shared a lease (${Math.round(text.length / 1000)}k characters)`);
+  const mine = bubble(file ? `Shared a lease (${file.name})` : `Shared a lease (${Math.round(text.length / 1000)}k characters)`);
   mine.classList.add("lease-shared");
   thread.append(mine);
   const slot = document.createElement("div");
@@ -448,7 +450,14 @@ async function shareLease(text) {
   slot.innerHTML = `<p class="thinking">Reading your lease…</p>`;
   thread.append(slot);
   try {
-    const res = await fetch("/api/lease", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) });
+    let res;
+    if (file) {
+      const form = new FormData();
+      form.append("file", file);
+      res = await fetch("/api/lease-file", { method: "POST", body: form });
+    } else {
+      res = await fetch("/api/lease", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) });
+    }
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail);
     setLease(data.terms, data.facts ?? {});
@@ -458,15 +467,33 @@ async function shareLease(text) {
       <button class="btn ghost small" type="button">Check every term of this lease</button></div>`;
     $("button", slot).onclick = () => {
       const form = new FormData();
-      form.append("text", text);
+      if (file) form.append("file", file);
+      else form.append("text", text);
       document.querySelector('.tab[aria-controls="view-review"]')?.click();
       startReview(form);
     };
   } catch (err) {
     console.warn("lease failed:", err);
-    slot.innerHTML = `<p class="muted">I couldn't read that as a lease. You can also upload it under “Review a lease”.</p>`;
+    slot.innerHTML = `<p class="muted">${esc(err.message && !/fetch/i.test(err.message) ? err.message : "I couldn't read that as a lease.")}</p>`;
   }
 }
+
+$("#attach-lease").addEventListener("click", () => $("#attach-file").click());
+$("#attach-file").addEventListener("change", () => {
+  const f = $("#attach-file").files[0];
+  $("#attach-file").value = "";
+  if (f) shareLease("", f);
+});
+// Dropping a lease file onto the chat box attaches it too.
+$("#ask-form").addEventListener("dragover", (e) => { e.preventDefault(); $("#ask-form").classList.add("over"); });
+$("#ask-form").addEventListener("dragleave", () => $("#ask-form").classList.remove("over"));
+$("#ask-form").addEventListener("drop", (e) => {
+  const f = e.dataTransfer.files[0];
+  $("#ask-form").classList.remove("over");
+  if (!f) return;
+  e.preventDefault();
+  shareLease("", f);
+});
 const role = () => document.querySelector("input[name=role]:checked")?.value || null;
 
 function setRoleHint() {

@@ -34,10 +34,11 @@ LIMITS = {
     "/api/scan": (int(os.environ.get("SCAN_PER_HOUR", 6)), "lease scans"),
     "/api/split": (int(os.environ.get("SPLIT_PER_HOUR", 12)), "lease uploads"),
     "/api/lease": (int(os.environ.get("SPLIT_PER_HOUR", 12)), "lease uploads"),
+    "/api/lease-file": (int(os.environ.get("SPLIT_PER_HOUR", 12)), "lease uploads"),
     "/api/feedback": (int(os.environ.get("FEEDBACK_PER_HOUR", 60)), "feedback messages"),
 }
 DAILY_ASKS = int(os.environ.get("DAILY_ASKS", 2000))  # whole site, questions per day
-MAX_BODY = {"/api/split": 10_000_000}                   # bytes; uploads can be PDFs
+MAX_BODY = {"/api/split": 10_000_000, "/api/lease-file": 10_000_000}                   # bytes; uploads can be PDFs
 DEFAULT_MAX_BODY = 1_000_000
 BLOCKED = ("/review", "/api/drafts")
 
